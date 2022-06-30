@@ -16,7 +16,7 @@ function Login() {
   const router = useRouter();
   // console.log(router);
   return (
-    <AuthSideLayout>
+    <AuthSideLayout title="Login">
       <div className={`${styles.contentLogin} col-md-6`}>
         <h2>
           Start Accessing Banking Needs With All Devices and All Platforms With
@@ -33,7 +33,7 @@ function Login() {
             <input type="email" name="email" placeholder="Enter your E-mail" />
           </div>
           <div className={styles.contentInput}>
-            <Image src={Lock} alt="emailimg" />
+            <Image src={Lock} alt="passimg" />
             <input
               type="password"
               name="password"

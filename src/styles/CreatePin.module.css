@@ -1,0 +1,23 @@
+/* Content */
+.contentPin {
+  /* width: 50%; */
+  padding: 100px 120px 100px 50px;
+}
+
+.contentDesc {
+  color: #3a3d4299;
+}
+
+.contentButton {
+  background-color: #dadada;
+  color: #88888f;
+  padding: 20px 0;
+  border-radius: 20px;
+  width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .contentPin {
+    padding: 100px;
+  }
+}

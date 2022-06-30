@@ -52,3 +52,9 @@
   cursor: pointer;
   font-weight: bold;
 }
+
+@media only screen and (max-width: 600px) {
+  .contentRegister {
+    padding: 100px;
+  }
+}

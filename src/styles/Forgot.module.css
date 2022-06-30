@@ -1,5 +1,5 @@
 /* Content */
-.contentLogin {
+.contentForgot {
   /* width: 50%; */
   padding: 100px 120px 100px 50px;
 }
@@ -17,7 +17,6 @@
   padding: 10px 0;
 }
 
-/* butuh responsive */
 .contentInput > input {
   border: none;
   position: relative;
@@ -40,22 +39,8 @@
   border-radius: 20px;
 }
 
-.eyeCrossed {
-  cursor: pointer;
-}
-
-.forgotPass {
-  cursor: pointer;
-}
-
-.registerLink {
-  color: #6379f4;
-  cursor: pointer;
-  font-weight: bold;
-}
-
 @media only screen and (max-width: 600px) {
-  .contentLogin {
+  .contentForgot {
     padding: 100px;
   }
 }
