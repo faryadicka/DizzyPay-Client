@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 //Layout
 import AuthSideLayout from "../../components/AuthLayout/Index";
@@ -11,10 +11,8 @@ import { loginAction } from "../../redux/actionCreator/auth";
 
 //assets
 import styles from "../../styles/Login.module.css";
-import SmartPhone from "../../assets/img/hp.png";
 import Lock from "../../assets/img/lockauth.png";
 import Email from "../../assets/img/mail.png";
-import Eye from "../../assets/img/eye-crossed.png";
 import Hide from "../../assets/img/hide.png";
 import Show from "../../assets/img/show.png";
 
