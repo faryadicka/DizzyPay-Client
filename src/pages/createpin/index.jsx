@@ -5,7 +5,6 @@ import styles from "../../styles/CreatePin.module.css";
 
 const CreatePin = () => {
   const [values, setValues] = useState(["", "", "", "", "", ""]);
-  console.log(values);
   return (
     <AuthSideLayout title="Create Pin">
       <div className={`${styles.contentPin} col-md-6 col-12`}>
