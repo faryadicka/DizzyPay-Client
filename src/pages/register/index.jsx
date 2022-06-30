@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
@@ -9,16 +10,28 @@ import Lock from "../../assets/img/lockauth.png";
 import Email from "../../assets/img/mail.png";
 import Eye from "../../assets/img/eye-crossed.png";
 import Person from "../../assets/img/person.png";
+import Hide from "../../assets/img/hide.png";
+import Show from "../../assets/img/show.png";
 
 //Request Axios
-import { registerAxios } from "../../modules/auth";
+// import { registerAxios } from "../../modules/auth";
+
+//ReduxAction
+import { registerAction } from "../../redux/actionCreator/auth";
 
 const Register = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errMsg, setErrMessage] = useState("");
+  const [successMsg, setSuccessMessage] = useState("");
+  const [showPass, setShowPass] = useState(false);
+  const [registered, setRegitered] = useState(false);
+  const id = useSelector((state) => state.auth.dataId);
+  const login = useSelector((state) => state.auth.isLoggedin);
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -28,20 +41,19 @@ const Register = () => {
       email,
       password,
     };
-    registerAxios(body)
+    dispatch(registerAction(body))
       .then((res) => {
-        console.log(res);
+        console.log(res.value);
+        setSuccessMessage(res.value.data.msg);
+        setRegitered(true);
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response);
+        setErrMessage(err.response.data.msg);
+        setRegitered(false);
       });
   };
-  const env = process.env.HOST;
-  console.log("first:", firstName);
-  console.log("last:", lastName);
-  console.log("email:", email);
-  console.log("password:", password);
-  console.log(env);
+
   return (
     <AuthSideLayout title="Register">
       <div className={`${styles.contentRegister} col-md-6 col-12`}>
@@ -97,7 +109,7 @@ const Register = () => {
           <div className={styles.contentInput}>
             <Image src={Lock} alt="emailimg" />
             <input
-              type="password"
+              type={`${showPass ? "text" : "password"}`}
               name="password"
               placeholder="Create your password"
               value={password}
@@ -105,8 +117,24 @@ const Register = () => {
                 setPassword(e.target.value);
               }}
             />
-            <Image src={Eye} alt="eye" className={styles.eyeCrossed} />
+            <Image
+              src={showPass ? Show : Hide}
+              alt="eye"
+              className={styles.eyeCrossed}
+              onClick={() => {
+                setShowPass(!showPass);
+              }}
+            />
           </div>
+          {login ? (
+            <>
+              <p className="text-center text-success mt-4 fw-bold">
+                {`${successMsg}`}
+              </p>
+            </>
+          ) : (
+            <p className="text-center text-danger mt-4 fw-bold">{`${errMsg}`}</p>
+          )}
           <button type="submit" className={`${styles.contentButton} btn mt-5`}>
             Sign Up
           </button>
