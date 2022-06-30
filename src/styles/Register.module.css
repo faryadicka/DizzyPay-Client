@@ -1,0 +1,54 @@
+.contentRegister {
+  /* width: 50%; */
+  padding: 100px 120px 100px 50px;
+}
+
+.contentDesc {
+  color: #3a3d4299;
+}
+
+.contentForm > div {
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 1px solid #a9a9a999;
+  margin-top: 20px;
+  padding: 10px 0;
+}
+
+/* butuh responsive */
+.contentInput > input {
+  border: none;
+  position: relative;
+  bottom: 8px;
+  left: 10px;
+  width: 90%;
+}
+
+.contentInput > input:focus {
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
+}
+
+.contentButton {
+  background-color: #dadada;
+  color: #88888f;
+  padding: 20px 0;
+  border-radius: 20px;
+}
+
+.eyeCrossed {
+  cursor: pointer;
+}
+
+.forgotPass {
+  cursor: pointer;
+}
+
+.loginLink {
+  color: #6379f4;
+  cursor: pointer;
+  font-weight: bold;
+}

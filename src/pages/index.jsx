@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import styles from "../styles/Home.module.css";
 import Image from "next/image";
 
@@ -17,6 +18,7 @@ import Right from "../assets/img/right.png";
 import Profile from "../assets/img/1.png";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <>
       <div className={`${styles.containerHome} text-center`}>
@@ -27,11 +29,19 @@ export default function Home() {
             </h3>
             <div className="col-md-3">
               <button
+                onClick={() => {
+                  router.push("/login");
+                }}
                 className={`px-4 btn btn-primary border border-white rounded-5`}
               >
                 Login
               </button>
-              <button className="btn btn-light ms-2 px-4 rounded-5">
+              <button
+                onClick={() => {
+                  router.push("/register");
+                }}
+                className="btn btn-light ms-2 px-4 rounded-5"
+              >
                 Sign Up
               </button>
             </div>
