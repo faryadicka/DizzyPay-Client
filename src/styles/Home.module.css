@@ -14,3 +14,28 @@
   color: white;
   font-weight: bold;
 }
+
+.colDashboard {
+  padding: 30px 40px;
+  border-radius: 20px;
+  width: 55%;
+  height: 468px;
+  background-color: white;
+}
+
+.colHistory {
+  padding: 30px 40px;
+  border-radius: 20px;
+  width: 45%;
+  height: 468px;
+  background-color: white;
+}
+
+.clickAble {
+  cursor: pointer;
+}
+
+.imageAvatar {
+  width: 200px;
+  height: 200px;
+}

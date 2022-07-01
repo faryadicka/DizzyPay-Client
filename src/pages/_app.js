@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Script from 'next/script'
 // Bootstrap
 import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/js/bootstrap.bundle.js'
 import { Provider as ReduxProvider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { store, persistor } from '../redux/store'

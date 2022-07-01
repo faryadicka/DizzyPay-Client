@@ -1,7 +1,11 @@
 import Image from "next/image";
 import styles from "../../styles/Home.module.css";
-import Ava from "../../assets/img/avanav.png";
+import ArrowGreen from "../../assets/img/arrow-green.svg";
+import ArrowRed from "../../assets/img/arrow-Red.svg";
+import Avatar from "../../assets/img/logo.svg";
+//Components
 import LoggedinLayout from "../../components/LoggedInLayout/index";
+import CardHistory from "../../components/CardHistory/index";
 
 const Home = () => {
   return (
@@ -20,7 +24,41 @@ const Home = () => {
             <button className={`btn ${styles.btnSaldo}`}>Top Up</button>
           </div>
         </div>
-        <div className="row"></div>
+        <div
+          className={`d-flex justify-content-between gap-3 mt-4 ${styles.rowInfo}`}
+        >
+          <div className={`col-5 ${styles.colDashboard}`}>
+            <div className="row justify-content-between">
+              <div className="col-md-4">
+                <Image src={ArrowGreen} alt="arrow-gren" />
+                <p>Income</p>
+                <p>Rp2.120.000</p>
+              </div>
+              <div className="col-md-4">
+                <Image src={ArrowRed} alt="arrow-gren" />
+                <p>Expense</p>
+                <p>Rp1.560.000</p>
+              </div>
+            </div>
+          </div>
+          <div className={`col-4 ${styles.colHistory}`}>
+            <div className="row justify-content-between">
+              <div className="col-md-7">
+                <p className={`fw-bold ${styles.clickAble}`}>
+                  Transaction History
+                </p>
+              </div>
+              <div className="col-md-3">
+                <p className={`${styles.clickAble}`}>See all</p>
+              </div>
+            </div>
+            <CardHistory />
+            <CardHistory />
+            <CardHistory />
+            <CardHistory />
+            <CardHistory />
+          </div>
+        </div>
       </div>
     </LoggedinLayout>
   );
