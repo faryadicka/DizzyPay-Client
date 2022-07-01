@@ -1,0 +1,75 @@
+.infoNav {
+  line-height: 10px;
+}
+
+.navBar {
+  border-radius: 0 0 50px 50px;
+  background-color: white;
+  box-shadow: 0px 5px 20px 0 rgba(73, 73, 73, 0.226);
+}
+
+.brandName {
+  color: #6379f4;
+  cursor: pointer;
+}
+
+.clickAble {
+  cursor: pointer;
+}
+
+.footer {
+  background-color: #6379f4;
+}
+
+.bgColor {
+  background-color: #dde9fc;
+}
+
+.navMain {
+  background-color: white;
+  border-radius: 20px;
+  padding: 40px 40px 40px;
+}
+
+.navMain > div {
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.activeNav {
+  border-left: 3px solid #6379f4;
+  color: #6379f4;
+}
+
+.disableNav {
+  color: #3a3d42cc;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+.logout {
+  margin-top: 250px;
+}
+
+.navMenu,
+.logout {
+  cursor: pointer;
+  /* align-items: center; */
+  gap: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .logout {
+    margin-top: 0px;
+  }
+  .navMain > div {
+    font-size: 10px;
+  }
+  .navMenu,
+  .logout {
+    gap: 5px;
+  }
+  .footer {
+    font-size: 11px;
+  }
+}
