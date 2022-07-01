@@ -29,7 +29,7 @@
   background-color: white;
   border-radius: 20px;
   padding: 40px 40px 10px;
-  height: 678px;
+  height: 620px;
 }
 
 .navMain > div {
@@ -48,7 +48,7 @@
 }
 
 .logout {
-  margin-top: 350px;
+  margin-top: 300px;
 }
 
 .navMenu,
@@ -70,5 +70,9 @@
   }
   .footer {
     font-size: 11px;
+  }
+  .navMain {
+    padding: 40px;
+    height: 100%;
   }
 }

@@ -16,18 +16,18 @@
 }
 
 .colDashboard {
-  padding: 30px 40px;
+  padding: 15px 40px;
   border-radius: 20px;
   width: 55%;
-  height: 420px;
+  height: 360px;
   background-color: white;
 }
 
 .colHistory {
-  padding: 30px 40px;
+  padding: 15px 40px;
   border-radius: 20px;
   width: 45%;
-  height: 420px;
+  height: 360px;
   background-color: white;
 }
 
@@ -38,4 +38,17 @@
 .imageAvatar {
   width: 200px;
   height: 200px;
+}
+
+@media only screen and (max-width: 600px) {
+  .dashboardCard > p {
+    font-size: 11px;
+  }
+  .clickAble {
+    font-size: 8px;
+  }
+  .colHistory {
+    padding: 15px 20px;
+    border-radius: 20px;
+  }
 }

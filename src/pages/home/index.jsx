@@ -29,12 +29,12 @@ const Home = () => {
         >
           <div className={`col-5 ${styles.colDashboard}`}>
             <div className="row justify-content-between">
-              <div className="col-md-4">
+              <div className={`col-md-4 col-4 ${styles.dashboardCard}`}>
                 <Image src={ArrowGreen} alt="arrow-gren" />
                 <p>Income</p>
                 <p>Rp2.120.000</p>
               </div>
-              <div className="col-md-4">
+              <div className={`col-md-4 col-4 ps-4 ${styles.dashboardCard}`}>
                 <Image src={ArrowRed} alt="arrow-gren" />
                 <p>Expense</p>
                 <p>Rp1.560.000</p>
@@ -43,12 +43,12 @@ const Home = () => {
           </div>
           <div className={`col-4 ${styles.colHistory}`}>
             <div className="row justify-content-between">
-              <div className="col-md-7">
+              <div className="col-md-7 col-9">
                 <p className={`fw-bold ${styles.clickAble}`}>
                   Transaction History
                 </p>
               </div>
-              <div className="col-md-3">
+              <div className="col-md-3 col-3">
                 <p className={`${styles.clickAble}`}>See all</p>
               </div>
             </div>

@@ -1,7 +1,7 @@
 .containerHistory {
   background-color: white;
-  width: 75%;
-  height: 678px;
+  /* width: 75%; */
+  height: 620px;
   border-radius: 20px;
   padding: 40px;
 }
@@ -26,4 +26,8 @@
 
 .dropdown:hover .dropdownContent {
   display: block;
+}
+
+.headerHistory {
+  margin-bottom: 40px;
 }

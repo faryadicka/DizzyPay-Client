@@ -6,7 +6,9 @@ const Hsitory = () => {
   return (
     <LoggedinLayout title="History">
       <div className={`col-12 col-md-9 ${styles.containerHistory}`}>
-        <div className="d-flex align-items-center justify-content-between">
+        <div
+          className={`${styles.headerHistory} d-flex align-items-center justify-content-between`}
+        >
           <h5>Transaction History</h5>
           <div className={`${styles.dropdown}`}>
             <span className="bg-light p-3 rounded-3">---Select Filter---</span>
@@ -15,7 +17,6 @@ const Hsitory = () => {
             </div>
           </div>
         </div>
-        <CardHistory />
         <CardHistory />
         <CardHistory />
         <CardHistory />

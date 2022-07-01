@@ -6,4 +6,12 @@
 
 .clickAble {
   cursor: pointer;
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .titleHistory,
+  .clickAble {
+    font-size: 8px;
+  }
 }

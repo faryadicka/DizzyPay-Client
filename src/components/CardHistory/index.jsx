@@ -5,7 +5,7 @@ import styles from "../../styles/CardHistory.module.css";
 const CardHistory = () => {
   return (
     <div
-      className={`row justify-content-between align-items-center mt-4 ${styles.clickAble}`}
+      className={`row justify-content-between align-items-center ${styles.clickAble}`}
     >
       <div className="col-8">
         <div className="d-flex align-items-center justify-content-start gap-3">

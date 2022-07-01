@@ -24,7 +24,6 @@ const Transfer = () => {
         <CardTransfer />
         <CardTransfer />
         <CardTransfer />
-        <CardTransfer />
       </div>
     </LoggedinLayout>
   );
