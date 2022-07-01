@@ -18,7 +18,7 @@ const CardHistory = () => {
           </div>
         </div>
       </div>
-      <div className="col-4">
+      <div className="col-4 text-end">
         <p>+Rp50.000</p>
       </div>
     </div>

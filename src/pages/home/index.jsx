@@ -56,7 +56,6 @@ const Home = () => {
             <CardHistory />
             <CardHistory />
             <CardHistory />
-            <CardHistory />
           </div>
         </div>
       </div>

@@ -1,0 +1,36 @@
+.containerTransfer {
+  background-color: white;
+  width: 75%;
+  height: 678px;
+  border-radius: 20px;
+  padding: 40px;
+}
+
+.inputRecevier {
+  margin-top: 20px;
+  position: relative;
+}
+
+.imgSearch {
+  position: absolute;
+  left: 10px;
+  top: 15px;
+}
+
+.inputSearch {
+  height: 54px;
+  width: 100%;
+  border-radius: 20px;
+  padding: 20px 50px;
+  outline: none;
+  border: none;
+  background-color: #3a3d421a;
+}
+
+.inputSearch:focus {
+  border: none;
+  background-color: #3a3d421a;
+  resize: none;
+  outline: none;
+  padding: 20px 50px;
+}
