@@ -1,0 +1,13 @@
+.modalConfirm {
+  border-radius: 20px;
+  padding: 15px;
+}
+
+.pinCode {
+  margin-top: 30px;
+  position: relative;
+  left: 60px;
+}
+
+@media only screen and (max-width: 600px) {
+}

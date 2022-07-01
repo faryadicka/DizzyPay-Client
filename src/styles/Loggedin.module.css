@@ -56,6 +56,36 @@
   cursor: pointer;
   gap: 20px;
 }
+.navMenu > button {
+  background-color: transparent;
+  border: none;
+  color: #3a3d42cc;
+}
+
+.logout > button {
+  background-color: transparent;
+  border: none;
+  color: #3a3d42cc;
+}
+
+.inputTopup {
+  text-align: center;
+  border: 1px solid #a9a9a999;
+  color: #6379f4;
+  border-radius: 10px;
+  width: 75%;
+  padding: 10px 10px 5px;
+}
+
+.inputTopup::placeholder {
+  color: #a9a9a966;
+}
+
+.inputTopup::-webkit-outer-spin-button,
+.inputTopup::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 @media only screen and (max-width: 600px) {
   .logout {

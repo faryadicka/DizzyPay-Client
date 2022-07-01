@@ -9,6 +9,7 @@ import Grid from "../../assets/img/griddisable.svg";
 import Plus from "../../assets/img/plus.svg";
 import Logout from "../../assets/img/log-out.svg";
 import User from "../../assets/img/user.svg";
+import ModalInput from "../ModalInput";
 
 const LoggedinLayout = ({ children, title }) => {
   return (
@@ -50,61 +51,63 @@ const LoggedinLayout = ({ children, title }) => {
                   className={`d-flex justify-content-start ${styles.navMenu}`}
                 >
                   <Image src={Grid} alt="logout" />
-                  <p
+                  <button
                     className={`${
                       false ? styles.activeNav : styles.disableNav
                     }`}
                   >
                     Dashboard
-                  </p>
+                  </button>
                 </div>
                 <div
                   className={`d-flex justify-content-start ${styles.navMenu}`}
                 >
                   <Image src={Arrow} alt="logout" />
-                  <p
+                  <button
                     className={`${
                       false ? styles.activeNav : styles.disableNav
                     }`}
                   >
                     Transfer
-                  </p>
+                  </button>
                 </div>
                 <div
                   className={`d-flex justify-content-start ${styles.navMenu}`}
                 >
                   <Image src={Plus} alt="logout" />
-                  <p
+                  <button
+                    data-bs-toggle="modal"
+                    data-bs-target="#topUpModal"
                     className={`${
                       false ? styles.activeNav : styles.disableNav
                     }`}
                   >
                     Top Up
-                  </p>
+                  </button>
                 </div>
                 <div
                   className={`d-flex justify-content-start ${styles.navMenu}`}
                 >
                   <Image src={User} alt="logout" />
-                  <p
+                  <button
                     className={`${
                       false ? styles.activeNav : styles.disableNav
                     }`}
                   >
                     Profile
-                  </p>
+                  </button>
                 </div>
                 <div
                   className={`d-flex justify-content-start ${styles.logout}`}
                 >
                   <Image src={Logout} alt="logout" />
-                  <p
+                  <button
                     className={`${
                       false ? styles.activeNav : styles.disableNav
                     }`}
                   >
                     Logout
-                  </p>
+                  </button>
                 </div>
               </div>
             </div>
@@ -121,6 +124,19 @@ const LoggedinLayout = ({ children, title }) => {
           </div>
         </footer>
       </div>
+      <ModalInput
+        id="topUpModal"
+        title="Topup"
+        desc="Enter the amount of money, and click submit"
+        button="Submit"
+      >
+        <input
+          type="number"
+          name="topup"
+          className={styles.inputTopup}
+          placeholder="_______________________________________"
+        />
+      </ModalInput>
     </>
   );
 };
