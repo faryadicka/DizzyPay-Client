@@ -89,6 +89,9 @@ const ChangePassword = () => {
               className={styles.eyeCrossed}
             />
           </div>
+          <button type="submit" className={`${styles.contentButton} btn mt-5`}>
+            Change Password
+          </button>
         </form>
       </div>
     </LoggedinLayout>

@@ -71,3 +71,14 @@
   resize: none;
   outline: none;
 }
+
+.contentButton {
+  background-color: #dadada;
+  color: #88888f;
+  padding: 20px 0;
+  border-radius: 20px;
+}
+
+.eyeCrossed {
+  cursor: pointer;
+}
