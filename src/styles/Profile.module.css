@@ -57,12 +57,40 @@
   padding: 10px 0;
 }
 
+.contentFormPin {
+  border: none;
+  margin-top: 150px;
+  padding: 10px 0;
+  padding: 0px 120px;
+}
+
 .contentInput > input {
   border: none;
   position: relative;
   bottom: 8px;
   left: 10px;
   width: 90%;
+}
+
+.contentInputPhone > input {
+  border: none;
+  position: relative;
+  bottom: 8px;
+  left: 10px;
+  width: 80%;
+}
+
+.spanInput {
+  position: relative;
+  bottom: 7px;
+  left: 7px;
+}
+
+.contentInputPhone > input:focus {
+  border: none;
+  background-color: transparent;
+  resize: none;
+  outline: none;
 }
 
 .contentInput > input:focus {
@@ -78,7 +106,32 @@
   padding: 20px 0;
   border-radius: 20px;
 }
+.disableButton {
+  background-color: #dadada;
+  color: #88888f;
+  padding: 20px 0;
+  border-radius: 20px;
+  width: 100%;
+}
 
+.activeButton {
+  background-color: #6379f4;
+  color: #fff;
+  padding: 20px 0;
+  border-radius: 20px;
+  width: 100%;
+}
 .eyeCrossed {
   cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .contentForm {
+    padding: 10px;
+  }
+  .spanInput {
+    position: relative;
+    bottom: 7px;
+    left: 15px px;
+  }
 }

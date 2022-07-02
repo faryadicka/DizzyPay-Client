@@ -23,6 +23,7 @@
   position: relative;
   bottom: 8px;
   left: 10px;
+  width: 90%;
 }
 
 .contentInput > input:focus {
@@ -32,11 +33,23 @@
   outline: none;
 }
 
-.contentButton {
+.disableButton {
   background-color: #dadada;
   color: #88888f;
   padding: 20px 0;
   border-radius: 20px;
+}
+
+.activeButton {
+  background-color: #6379f4;
+  color: #fff;
+  padding: 20px 0;
+  border-radius: 20px;
+}
+
+.activeButton:hover {
+  font-weight: bold;
+  color: #fff;
 }
 
 .eyeCrossed {

@@ -140,10 +140,10 @@ const LoggedinLayout = ({ children, title }) => {
         </main>
         <footer className={`${styles.footer}`}>
           <div className="d-flex container justify-content-between py-5 text-white">
-            <p>2020 FazzPay. All right reserved.</p>
+            <p>2022 DizzyPay. All right reserved.</p>
             <div className="d-flex gap-3">
-              <p>2020 FazzPay. All right reserved.</p>
-              <p>contact@fazzpay.com</p>
+              <p>2022 DizzyPay. All right reserved.</p>
+              <p>contact@dizzypay.com</p>
             </div>
           </div>
         </footer>

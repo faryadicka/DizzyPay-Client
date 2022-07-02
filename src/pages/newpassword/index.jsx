@@ -10,7 +10,9 @@ import Show from "../../assets/img/show.png";
 
 const NewPassword = () => {
   const [showPass, setShowPass] = useState(false);
+  const [showPass1, setShowPass1] = useState(false);
   const [password, setPassword] = useState("");
+  const [password1, setPassword1] = useState("");
 
   return (
     <AuthSideLayout title="New Password">
@@ -27,6 +29,7 @@ const NewPassword = () => {
           className={`${styles.contentForm} d-flex flex-column`}
           // onSubmit={handleLogin}
         >
+          {/* 1 */}
           <div className={styles.contentInput}>
             <Image src={Lock} alt="passimg" />
             <input
@@ -47,31 +50,34 @@ const NewPassword = () => {
               className={styles.eyeCrossed}
             />
           </div>
+          {/* 2 */}
           <div className={styles.contentInput}>
             <Image src={Lock} alt="passimg" />
             <input
-              type={`${showPass ? "text" : "password"}`}
+              type={`${showPass1 ? "text" : "password"}`}
               name="password"
               placeholder="Create new password"
-              value={password}
+              value={password1}
               onChange={(e) => {
-                setPassword(e.target.value);
+                setPassword1(e.target.value);
               }}
             />
             <Image
               onClick={() => {
-                setShowPass(!showPass);
+                setShowPass1(!showPass1);
               }}
-              src={showPass ? Show : Hide}
+              src={showPass1 ? Show : Hide}
               alt="eye"
               className={styles.eyeCrossed}
             />
           </div>
           <button
-            type="submit"
-            className={`${styles.contentButton} fw-bold btn mt-5`}
+            type={`${password && password1 ? "submit" : "button"}`}
+            className={`${
+              password && password1 ? styles.activeButton : styles.disableButton
+            } btn mt-5`}
           >
-            Reset password
+            Reset Password
           </button>
         </form>
       </div>

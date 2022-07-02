@@ -111,7 +111,12 @@ function Login() {
           ) : (
             <p className="text-center text-danger mt-4 fw-bold">{`${errMsg}`}</p>
           )}
-          <button type="submit" className={`${styles.contentButton} btn mt-5`}>
+          <button
+            type={`${email && password ? "submit" : "button"}`}
+            className={`${
+              email && password ? styles.activeButton : styles.disableButton
+            } btn mt-5`}
+          >
             Login
           </button>
           <p className="text-center mt-5">

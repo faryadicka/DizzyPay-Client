@@ -4,8 +4,10 @@ import AuthSideLayout from "../../components/AuthLayout/Index";
 
 import styles from "../../styles/Forgot.module.css";
 import Email from "../../assets/img/mail.png";
+import { useState } from "react";
 
 const Forgot = () => {
+  const [email, setEmail] = useState();
   return (
     <AuthSideLayout title="Forgot Pass">
       <div className={`${styles.contentForgot} col-md-6 col-12`}>
@@ -21,9 +23,21 @@ const Forgot = () => {
         <form className={`${styles.contentForm} d-flex flex-column`}>
           <div className={styles.contentInput}>
             <Image src={Email} alt="emailimg" />
-            <input type="email" name="email" placeholder="Enter your E-mail" />
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your E-mail"
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
           </div>
-          <button className={`${styles.contentButton} btn mt-5`}>
+          <button
+            type={`${email ? "submit" : "button"}`}
+            className={`${
+              email ? styles.activeButton : styles.disableButton
+            } btn mt-5`}
+          >
             Confirm
           </button>
         </form>

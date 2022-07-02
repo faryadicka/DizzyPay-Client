@@ -135,7 +135,16 @@ const Register = () => {
           ) : (
             <p className="text-center text-danger mt-4 fw-bold">{`${errMsg}`}</p>
           )}
-          <button type="submit" className={`${styles.contentButton} btn mt-5`}>
+          <button
+            type={`${
+              email && password && firstName && lastName ? "submit" : "button"
+            }`}
+            className={`${
+              email && password && firstName && lastName
+                ? styles.activeButton
+                : styles.disableButton
+            } btn mt-5`}
+          >
             Sign Up
           </button>
           <p className="text-center mt-5">
