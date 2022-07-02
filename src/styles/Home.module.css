@@ -19,7 +19,8 @@
   padding: 15px 40px;
   border-radius: 20px;
   width: 55%;
-  height: 360px;
+  /* height: 360px; */
+  height: 100%;
   background-color: white;
 }
 
@@ -27,7 +28,8 @@
   padding: 15px 40px;
   border-radius: 20px;
   width: 45%;
-  height: 360px;
+  /* height: 360px; */
+  height: auto;
   background-color: white;
 }
 

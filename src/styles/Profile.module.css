@@ -1,0 +1,45 @@
+.containerProfile {
+  background-color: white;
+  /* width: 75%; */
+  height: 100%;
+  border-radius: 20px;
+  padding: 40px;
+}
+
+.containerProfile > p {
+  color: #7a7886;
+}
+
+.cardDetails {
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.075);
+  width: 100%;
+  border-radius: 15px;
+  padding: 5px 20px;
+  line-height: 25px;
+}
+
+.inputFile {
+  height: 60px;
+}
+
+.inputFile > p {
+  color: #7a7886;
+  margin-top: 13px;
+  cursor: pointer;
+}
+
+.contact {
+  color: #7a7886;
+}
+
+.cardProfile {
+  background-color: #e5e8ed;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.cardProfile > div {
+  color: #4d4b57;
+  cursor: pointer;
+  font-weight: 700;
+}

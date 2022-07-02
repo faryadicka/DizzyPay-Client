@@ -10,8 +10,13 @@ import Plus from "../../assets/img/plus.svg";
 import Logout from "../../assets/img/log-out.svg";
 import User from "../../assets/img/user.svg";
 import ModalInput from "../ModalInput";
+import { useState } from "react";
+import CardNotif from "../CardNotif";
+import { useRouter } from "next/router";
 
 const LoggedinLayout = ({ children, title }) => {
+  const router = useRouter();
+  const [dropdown, showDropdown] = useState(false);
   return (
     <>
       <Head>
@@ -36,8 +41,24 @@ const LoggedinLayout = ({ children, title }) => {
                   <p className="fw-bold">Ferry Aryadicka</p>
                   <p>+62 8988 2320 88</p>
                 </div>
-                <div>
-                  <Image src={Bell} alt="bell" className={styles.clickAble} />
+                <div className="position-relative">
+                  <Image
+                    src={Bell}
+                    alt="bell"
+                    className={styles.clickAble}
+                    onClick={() => {
+                      showDropdown(!dropdown);
+                    }}
+                  />
+                  {dropdown ? (
+                    <div className={`${styles.dropdown}`}>
+                      <CardNotif />
+                      <CardNotif />
+                      <CardNotif />
+                      <CardNotif />
+                      <CardNotif />
+                    </div>
+                  ) : null}
                 </div>
               </div>
             </div>
@@ -90,6 +111,9 @@ const LoggedinLayout = ({ children, title }) => {
                 >
                   <Image src={User} alt="logout" />
                   <button
+                    onClick={() => {
+                      router.push("/profile");
+                    }}
                     className={`${
                       false ? styles.activeNav : styles.disableNav
                     }`}
