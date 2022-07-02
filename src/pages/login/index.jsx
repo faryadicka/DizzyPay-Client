@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 //Layout
 import AuthSideLayout from "../../components/AuthLayout/Index";
@@ -15,6 +15,7 @@ import Lock from "../../assets/img/lockauth.png";
 import Email from "../../assets/img/mail.png";
 import Hide from "../../assets/img/hide.png";
 import Show from "../../assets/img/show.png";
+import ModalNav from "../../components/ModalNav";
 
 function Login() {
   const router = useRouter();
@@ -26,7 +27,8 @@ function Login() {
   const [showPass, setShowPass] = useState(false);
   const [login, setLogin] = useState(false);
 
-  // const login = useSelector((state) => state.auth.isLoggedin);
+  const pin = useSelector((state) => state.auth.dataLogin.pin);
+  console.log(pin);
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -102,16 +104,12 @@ function Login() {
           >
             Forgot password?
           </p>
-          {login ? (
-            <>
-              <p className="text-center text-success mt-4 fw-bold">
-                {`${successMsg}`}
-              </p>
-            </>
-          ) : (
+          {login ? null : (
             <p className="text-center text-danger mt-4 fw-bold">{`${errMsg}`}</p>
           )}
           <button
+            data-bs-toggle="modal"
+            data-bs-target="#loginModal"
             type={`${email && password ? "submit" : "button"}`}
             className={`${
               email && password ? styles.activeButton : styles.disableButton
@@ -132,6 +130,14 @@ function Login() {
           </p>
         </form>
       </div>
+      {login ? (
+        <ModalNav
+          id="loginModal"
+          message={successMsg}
+          button={pin === null ? "Create PIN" : "HOME"}
+          path={pin === null ? "/createpin" : "/home"}
+        />
+      ) : null}
     </AuthSideLayout>
   );
 }

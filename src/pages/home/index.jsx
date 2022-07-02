@@ -1,13 +1,23 @@
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Image from "next/image";
 import styles from "../../styles/Home.module.css";
 import ArrowGreen from "../../assets/img/arrow-green.svg";
 import ArrowRed from "../../assets/img/arrow-Red.svg";
-import Avatar from "../../assets/img/logo.svg";
 //Components
 import LoggedinLayout from "../../components/LoggedInLayout/index";
 import CardHistory from "../../components/CardHistory/index";
+//ReduxAction
+import { getProfileAction } from "../../redux/actionCreator/auth";
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const id = useSelector((state) => state.auth.dataLogin.id);
+  const token = useSelector((state) => state.auth.dataLogin.token);
+
+  useEffect(() => {
+    dispatch(getProfileAction(id, token));
+  });
   return (
     <LoggedinLayout title="Home">
       <div className="col-12 col-md-9">

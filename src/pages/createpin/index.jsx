@@ -6,10 +6,31 @@ import AuthSideLayout from "../../components/AuthLayout/Index";
 import styles from "../../styles/CreatePin.module.css";
 import Success from "../../assets/img/success.svg";
 
+import { createPinAxios } from "../../modules/auth";
+import { useSelector } from "react-redux";
+
 const CreatePin = () => {
   const [values, setValues] = useState(["", "", "", "", "", ""]);
   const [isSuccess, setIsSuccess] = useState(false);
   const router = useRouter();
+
+  const id = useSelector((state) => state.auth.dataLogin.id);
+  const token = useSelector((state) => state.auth.dataLogin.token);
+
+  const handleCreatePin = (e) => {
+    e.preventDefault();
+    const newPin = values.join("");
+    const body = {
+      pin: newPin,
+    };
+    createPinAxios(body, token, id)
+      .then((res) => {
+        setIsSuccess(true);
+      })
+      .catch((err) => {
+        setIsSuccess(false);
+      });
+  };
   return (
     <AuthSideLayout title="Create Pin">
       <div className={`${styles.contentPin} col-md-6 col-12`}>
@@ -36,6 +57,7 @@ const CreatePin = () => {
                 }}
               />
               <button
+                onClick={handleCreatePin}
                 type={`${
                   values[0] &&
                   values[1] &&
@@ -72,6 +94,7 @@ const CreatePin = () => {
             <button
               onClick={() => {
                 router.push("/home");
+                // setIsSuccess(false);
               }}
               className={`btn mt-5 ${styles.activeButton}`}
             >

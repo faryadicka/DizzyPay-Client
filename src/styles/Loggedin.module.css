@@ -83,6 +83,13 @@
   color: #a9a9a966;
 }
 
+.buttonURL {
+  position: relative;
+  left: 120px;
+  padding: 15px;
+  border-radius: 10px;
+}
+
 .inputTopup::-webkit-outer-spin-button,
 .inputTopup::-webkit-inner-spin-button {
   -webkit-appearance: none;

@@ -1,7 +1,8 @@
-import styles from "../../styles/ModalInput.module.css";
+import styles from "../../styles/Modal.module.css";
 // import ModalStatus from "../ModalStatus";
 
-const ModalInput = ({ id, title, desc, children, button }) => {
+const ModalInput = ({ id, title, desc, children, button, handle, status }) => {
+  console.log(status);
   return (
     <>
       <div
@@ -29,19 +30,23 @@ const ModalInput = ({ id, title, desc, children, button }) => {
               <div className={`${styles.pinCode}`}>{children}</div>
             </div>
             <div className="modal-footer  border border-0">
-              <button
-                data-bs-toggle="modal"
-                data-bs-target="#statusModal"
-                type="button"
-                className="btn btn-primary"
-              >
-                {button}
-              </button>
+              {status ? (
+                <></>
+              ) : (
+                <button
+                  data-bs-toggle="modal"
+                  data-bs-target="#statusModal"
+                  type="button"
+                  onClick={handle}
+                  className="btn btn-primary"
+                >
+                  {button}
+                </button>
+              )}
             </div>
           </div>
         </div>
       </div>
-      {/* <ModalStatus id="statusModal" /> */}
     </>
   );
 };
