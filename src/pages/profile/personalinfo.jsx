@@ -1,7 +1,11 @@
 import styles from "../../styles/Profile.module.css";
 import LoggedinLayout from "../../components/LoggedInLayout/index";
 
+import { useRouter } from "next/router";
+
 const PersonalInfo = () => {
+  const router = useRouter();
+  console.log(router);
   return (
     <LoggedinLayout title="Personal Info">
       <div className={`col-12 col-md-9 ${styles.containerProfile}`}>
@@ -13,27 +17,30 @@ const PersonalInfo = () => {
         </p>
         <div className={`mb-3 ${styles.cardDetails}`}>
           <p>
-            title
-            <section>Content</section>
+            First Name
+            <section className="fw-bold mt-3">Ferry</section>
           </p>
         </div>
         <div className={`mb-3 ${styles.cardDetails}`}>
           <p>
-            title
-            <section>Content</section>
+            Last Name
+            <section className="fw-bold mt-3">Aryadicka</section>
           </p>
         </div>
         <div className={`mb-3 ${styles.cardDetails}`}>
           <p>
-            title
-            <section>Content</section>
+            Verified E-mail
+            <section className="fw-bold mt-3">Faryadicka@outlook.com</section>
           </p>
         </div>
-        <div className={`mb-3 ${styles.cardDetails}`}>
+        <div
+          className={`mb-3 d-flex justify-content-between align-items-center ${styles.cardDetails}`}
+        >
           <p>
-            title
-            <section>Content</section>
+            Phone Number
+            <section className="fw-bold mt-3">+62 8988 2320 88</section>
           </p>
+          <p className="text-primary mt-3">Manage</p>
         </div>
       </div>
     </LoggedinLayout>

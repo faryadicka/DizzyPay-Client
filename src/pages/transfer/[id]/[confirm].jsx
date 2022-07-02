@@ -49,25 +49,25 @@ const TransferConfirm = () => {
           </div>
         ) : null}
         <h5 className="my-3">Details</h5>
-        <div className={`mb-3 ${styles.cardDetails}`}>
+        <div className={`mb-1 ${styles.cardDetails}`}>
           <p>
             title
             <section>Content</section>
           </p>
         </div>
-        <div className={`mb-3 ${styles.cardDetails}`}>
+        <div className={`mb-5 ${styles.cardDetails}`}>
           <p>
             title
             <section>Content</section>
           </p>
         </div>
-        <div className={`mb-3 ${styles.cardDetails}`}>
+        <div className={`mb-5 ${styles.cardDetails}`}>
           <p>
             title
             <section>Content</section>
           </p>
         </div>
-        <div className={`mb-3 ${styles.cardDetails}`}>
+        <div className={`mb-5 ${styles.cardDetails}`}>
           <p>
             title
             <section>Content</section>
