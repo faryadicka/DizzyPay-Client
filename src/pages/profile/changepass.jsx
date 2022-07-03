@@ -1,9 +1,8 @@
 import { useState } from "react";
 import styles from "../../styles/Profile.module.css";
 import LoggedinLayout from "../../components/LoggedInLayout/index";
-import Hide from "../../assets/img/hide.png";
-import Show from "../../assets/img/show.png";
-import Lock from "../../assets/img/lockauth.png";
+import Hide from "../../../public/image/hide.png";
+import Show from "../../../public/image/show.png";
 import Image from "next/image";
 
 const ChangePassword = () => {
@@ -28,7 +27,12 @@ const ChangePassword = () => {
         >
           {/* 1 */}
           <div className={`col-12 ${styles.contentInput}`}>
-            <Image src={Lock} alt="passimg" />
+            <Image
+              width={25}
+              height={25}
+              src={"/image/lockauth.png"}
+              alt="passimg"
+            />
             <input
               type={`${showPass ? "text" : "password"}`}
               name="password"
@@ -49,7 +53,12 @@ const ChangePassword = () => {
           </div>
           {/* 2 */}
           <div className={`col-12 ${styles.contentInput}`}>
-            <Image src={Lock} alt="passimg" />
+            <Image
+              width={25}
+              height={25}
+              src={"/image/lockauth.png"}
+              alt="passimg"
+            />
             <input
               type={`${showPass1 ? "text" : "password"}`}
               name="password"
@@ -70,7 +79,12 @@ const ChangePassword = () => {
           </div>
           {/* 3 */}
           <div className={`col-12 ${styles.contentInput}`}>
-            <Image src={Lock} alt="passimg" />
+            <Image
+              width={25}
+              height={25}
+              src={"/image/lockauth.png"}
+              alt="passimg"
+            />
             <input
               type={`${showPass2 ? "text" : "password"}`}
               name="password"

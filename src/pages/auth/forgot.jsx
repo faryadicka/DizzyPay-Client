@@ -3,7 +3,6 @@ import Image from "next/image";
 import AuthSideLayout from "../../components/AuthLayout/Index";
 
 import styles from "../../styles/Forgot.module.css";
-import Email from "../../assets/img/mail.png";
 import { useState } from "react";
 
 const Forgot = () => {
@@ -22,7 +21,12 @@ const Forgot = () => {
         </p>
         <form className={`${styles.contentForm} d-flex flex-column`}>
           <div className={styles.contentInput}>
-            <Image src={Email} alt="emailimg" />
+            <Image
+              width={25}
+              height={25}
+              src={"/image/mail.png"}
+              alt="emailimg"
+            />
             <input
               type="email"
               name="email"

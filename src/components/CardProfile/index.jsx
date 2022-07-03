@@ -1,6 +1,5 @@
 import styles from "../../styles/Profile.module.css";
 import Image from "next/image";
-import ArrowLeft from "../../assets/img/arrow-left.svg";
 import { useRouter } from "next/router";
 
 const CardProfile = ({ title, path }) => {
@@ -19,7 +18,12 @@ const CardProfile = ({ title, path }) => {
         {title}
       </div>
       <div className="col-1 mt-2">
-        <Image src={ArrowLeft} alt="arrowLeft" />
+        <Image
+          width={25}
+          height={25}
+          src={"/image/arrow-left.svg"}
+          alt="arrowLeft"
+        />
       </div>
     </div>
   );

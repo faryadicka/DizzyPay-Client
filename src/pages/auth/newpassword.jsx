@@ -4,9 +4,8 @@ import { useState } from "react";
 import AuthSideLayout from "../../components/AuthLayout/Index";
 
 import styles from "../../styles/NewPass.module.css";
-import Lock from "../../assets/img/lockauth.png";
-import Hide from "../../assets/img/hide.png";
-import Show from "../../assets/img/show.png";
+import Hide from "../../../public/image/hide.png";
+import Show from "../../../public/image/show.png";
 
 const NewPassword = () => {
   const [showPass, setShowPass] = useState(false);
@@ -31,7 +30,12 @@ const NewPassword = () => {
         >
           {/* 1 */}
           <div className={styles.contentInput}>
-            <Image src={Lock} alt="passimg" />
+            <Image
+              width={25}
+              height={25}
+              src={"/image/lockauth.png"}
+              alt="passimg"
+            />
             <input
               type={`${showPass ? "text" : "password"}`}
               name="password"
@@ -52,7 +56,12 @@ const NewPassword = () => {
           </div>
           {/* 2 */}
           <div className={styles.contentInput}>
-            <Image src={Lock} alt="passimg" />
+            <Image
+              width={25}
+              height={25}
+              src={"/image/lockauth.png"}
+              alt="passimg"
+            />
             <input
               type={`${showPass1 ? "text" : "password"}`}
               name="password"

@@ -3,7 +3,7 @@ import Image from "next/image";
 
 //assets
 import styles from "../../styles/AuthSideBar.module.css";
-import SmartPhone from "../../assets/img/hp.png";
+import SmartPhone from "../../../public/image/hp.png";
 
 const AuthSideLayout = ({ title, children }) => {
   return (

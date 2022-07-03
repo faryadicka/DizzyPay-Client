@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import AuthSideLayout from "../../components/AuthLayout/Index";
 import styles from "../../styles/CreatePin.module.css";
-import Success from "../../assets/img/success.svg";
+import Success from "../../../public/image/success.svg";
 
 import { createPinAxios } from "../../modules/auth";
 import { useSelector } from "react-redux";

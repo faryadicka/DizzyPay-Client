@@ -11,11 +11,8 @@ import { loginAction } from "../../redux/actionCreator/auth";
 
 //assets
 import styles from "../../styles/Login.module.css";
-import Lock from "../../assets/img/lockauth.png";
-import Email from "../../assets/img/mail.png";
-import Hide from "../../assets/img/hide.png";
-import Show from "../../assets/img/show.png";
-import ModalNav from "../../components/ModalNav";
+import Hide from "../../../public/image/hide.png";
+import Show from "../../../public/image/show.png";
 import ModalNavV2 from "../../components/ModalNavV2";
 
 function Login() {
@@ -67,7 +64,12 @@ function Login() {
           onSubmit={handleLogin}
         >
           <div className={styles.contentInput}>
-            <Image src={Email} alt="emailimg" />
+            <Image
+              width={25}
+              height={25}
+              src={"/image/mail.png"}
+              alt="emailimg"
+            />
             <input
               type="email"
               name="email"
@@ -79,7 +81,12 @@ function Login() {
             />
           </div>
           <div className={styles.contentInput}>
-            <Image src={Lock} alt="passimg" />
+            <Image
+              width={25}
+              height={25}
+              src={"/image/lockauth.png"}
+              alt="passimg"
+            />
             <input
               type={`${showPass ? "text" : "password"}`}
               name="password"

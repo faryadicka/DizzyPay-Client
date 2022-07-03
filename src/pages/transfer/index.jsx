@@ -1,6 +1,5 @@
 import LoggedinLayout from "../../components/LoggedInLayout/index";
 import styles from "../../styles/Transfer.module.css";
-import Search from "../../assets/img/search.svg";
 import Image from "next/image";
 import CardTransfer from "../../components/CardTransfer";
 import { useEffect, useState } from "react";
@@ -47,7 +46,12 @@ const Transfer = () => {
         <h5>Search Recevier</h5>
         <form className={styles.inputRecevier} onSubmit={handleSearchReceiver}>
           <div className={styles.imgSearch}>
-            <Image src={Search} alt="search" />
+            <Image
+              width={25}
+              height={25}
+              src={"/image/search.svg"}
+              alt="search"
+            />
           </div>
           <input
             type="text"

@@ -6,12 +6,8 @@ import Image from "next/image";
 //assets
 import styles from "../../styles/Register.module.css";
 import AuthSideLayout from "../../components/AuthLayout/Index";
-import Lock from "../../assets/img/lockauth.png";
-import Email from "../../assets/img/mail.png";
-import Eye from "../../assets/img/eye-crossed.png";
-import Person from "../../assets/img/person.png";
-import Hide from "../../assets/img/hide.png";
-import Show from "../../assets/img/show.png";
+import Hide from "../../../public/image/hide.png";
+import Show from "../../../public/image/show.png";
 
 //Request Axios
 // import { registerAxios } from "../../modules/auth";
@@ -71,7 +67,12 @@ const Register = () => {
           onSubmit={handleRegister}
         >
           <div className={styles.contentInput}>
-            <Image src={Person} alt="firstName" />
+            <Image
+              width={25}
+              height={25}
+              src={"/image/person.png"}
+              alt="firstName"
+            />
             <input
               type="text"
               name="first"
@@ -83,7 +84,12 @@ const Register = () => {
             />
           </div>
           <div className={styles.contentInput}>
-            <Image src={Person} alt="emailimg" />
+            <Image
+              width={25}
+              height={25}
+              src={"/image/person.png"}
+              alt="emailimg"
+            />
             <input
               type="text"
               name="last"
@@ -95,7 +101,12 @@ const Register = () => {
             />
           </div>
           <div className={styles.contentInput}>
-            <Image src={Email} alt="emailimg" />
+            <Image
+              width={25}
+              height={25}
+              src={"/image/mail.png"}
+              alt="emailimg"
+            />
             <input
               type="email"
               name="email"
@@ -107,7 +118,12 @@ const Register = () => {
             />
           </div>
           <div className={styles.contentInput}>
-            <Image src={Lock} alt="emailimg" />
+            <Image
+              width={25}
+              height={25}
+              src={"/image/lockauth.png"}
+              alt="emailimg"
+            />
             <input
               type={`${showPass ? "text" : "password"}`}
               name="password"

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Arrowup from "../../assets/img/arrow-red.svg";
+import Arrowup from "../../../public/image/arrow-red.svg";
 import styles from "../../styles/Loggedin.module.css";
 
 const CardNotif = () => {
