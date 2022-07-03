@@ -1,8 +1,20 @@
 import styles from "../../styles/Modal.module.css";
+import { useRouter } from "next/router";
+
 // import ModalStatus from "../ModalStatus";
 
-const ModalInput = ({ id, title, desc, children, button, handle, status }) => {
-  console.log(status);
+const ModalInput = ({
+  id,
+  title,
+  desc,
+  children,
+  button,
+  handle,
+  status,
+  click,
+}) => {
+  const router = useRouter();
+  console.log(router.query);
   return (
     <>
       <div
@@ -29,7 +41,7 @@ const ModalInput = ({ id, title, desc, children, button, handle, status }) => {
               <p>{desc}</p>
               <div className={`${styles.pinCode}`}>{children}</div>
             </div>
-            <div className="modal-footer  border border-0">
+            <div className="modal-footer border border-0">
               {status ? (
                 <></>
               ) : (
@@ -37,7 +49,7 @@ const ModalInput = ({ id, title, desc, children, button, handle, status }) => {
                   data-bs-toggle="modal"
                   data-bs-target="#statusModal"
                   type="button"
-                  onClick={handle}
+                  onClick={router.query.confirm === "confirm" ? click : handle}
                   className="btn btn-primary"
                 >
                   {button}

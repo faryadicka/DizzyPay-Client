@@ -1,7 +1,8 @@
-import { authLogin, authRegister, topUp, getProfile } from "./actionStrings"
+import { authLogin, authRegister, topUp, getProfile, setNominal, setNotes, getReceiverInfo, getTransferData } from "./actionStrings"
 
 import { loginAxios, registerAxios, getProfileByIdAxios } from "../../modules/auth"
 import { postTopUpAxios } from "../../modules/topup"
+import { getTransferDataAxios } from "../../modules/transfer"
 
 
 export const registerAction = (body) => {
@@ -29,5 +30,37 @@ export const getProfileAction = (id, token) => {
   return {
     type: getProfile,
     payload: getProfileByIdAxios(id, token)
+  }
+}
+
+export const getReceiverAction = (id, token) => {
+  return {
+    type: getReceiverInfo,
+    payload: getProfileByIdAxios(id, token)
+  }
+}
+
+export const setNominalAction = (nominal) => {
+  return {
+    type: setNominal,
+    payload: {
+      nominal
+    }
+  }
+}
+
+export const setNotesAction = (notes) => {
+  return {
+    type: setNotes,
+    payload: {
+      notes
+    }
+  }
+}
+
+export const getTransferDataAction = (body, token) => {
+  return {
+    type: getTransferData,
+    payload: getTransferDataAxios(body, token)
   }
 }

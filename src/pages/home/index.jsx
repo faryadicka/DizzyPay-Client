@@ -2,8 +2,6 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Image from "next/image";
 import styles from "../../styles/Home.module.css";
-import ArrowGreen from "../../assets/img/arrow-green.svg";
-import ArrowRed from "../../assets/img/arrow-Red.svg";
 //Components
 import LoggedinLayout from "../../components/LoggedInLayout/index";
 import CardHistory from "../../components/CardHistory/index";
@@ -14,20 +12,21 @@ const Home = () => {
   const dispatch = useDispatch();
   const id = useSelector((state) => state.auth.dataLogin.id);
   const token = useSelector((state) => state.auth.dataLogin.token);
+  const dataInfo = useSelector((state) => state.auth.dataInfo);
 
   useEffect(() => {
     dispatch(getProfileAction(id, token));
-  });
+  }, [dispatch, id, token]);
   return (
     <LoggedinLayout title="Home">
       <div className="col-12 col-md-9">
         <div
           className={`d-flex justify-content-between text-white ${styles.saldoRow}`}
         >
-          <div className="col-3">
+          <div className="col-5">
             <p>Balance</p>
-            <h1>Rp120.000</h1>
-            <p className="mt-4">+62 813-9387-7946</p>
+            <h1>{`Rp.${dataInfo ? dataInfo.data.balance : "0"}`}</h1>
+            <p className="mt-4">{dataInfo ? dataInfo.data.noTelp : "-"}</p>
           </div>
           <div className="col-3 row gap-3">
             <button className={`btn ${styles.btnSaldo}`}>Transfer</button>
@@ -40,12 +39,22 @@ const Home = () => {
           <div className={`col-5 ${styles.colDashboard}`}>
             <div className="row justify-content-between">
               <div className={`col-md-4 col-4 ${styles.dashboardCard}`}>
-                <Image src={ArrowGreen} alt="arrow-gren" />
+                <Image
+                  src={"/image/arrow-green.svg"}
+                  width={30}
+                  height={30}
+                  alt="arrow-gren"
+                />
                 <p>Income</p>
                 <p>Rp2.120.000</p>
               </div>
               <div className={`col-md-4 col-4 ps-4 ${styles.dashboardCard}`}>
-                <Image src={ArrowRed} alt="arrow-gren" />
+                <Image
+                  src={"/image/arrow-red.svg"}
+                  width={30}
+                  height={30}
+                  alt="arrow-gren"
+                />
                 <p>Expense</p>
                 <p>Rp1.560.000</p>
               </div>

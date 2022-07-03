@@ -3,19 +3,8 @@ import styles from "../styles/Landing.module.css";
 import Image from "next/image";
 
 //Assets
-import Call from "../assets/img/phone.png";
-import Lock from "../assets/img/lock.png";
-import Download from "../assets/img/download.png";
-import Air from "../assets/img/air.png";
-import Canon from "../assets/img/canon.png";
-import Dell from "../assets/img/dell.png";
-import Drop from "../assets/img/drop.png";
-import Hm from "../assets/img/hm.png";
-import Micro from "../assets/img/micro.png";
-import Smp from "../assets/img/smp.png";
-import Left from "../assets/img/left.png";
-import Right from "../assets/img/right.png";
-import Profile from "../assets/img/1.png";
+import Smp from "../../public/image/smp.png";
+import Profile from "../../public/image/1.png";
 
 export default function Home() {
   const router = useRouter();
@@ -30,7 +19,7 @@ export default function Home() {
             <div className="col-md-3">
               <button
                 onClick={() => {
-                  router.push("/login");
+                  router.push("/auth/login");
                 }}
                 className={`px-4 btn btn-primary border border-white rounded-5`}
               >
@@ -38,7 +27,7 @@ export default function Home() {
               </button>
               <button
                 onClick={() => {
-                  router.push("/register");
+                  router.push("/auth/register");
                 }}
                 className="btn btn-light ms-2 px-4 rounded-5"
               >
@@ -72,7 +61,12 @@ export default function Home() {
           </p>
           <div className="row justify-content-center mt-5">
             <div className="col-md-3 p-3">
-              <Image src={Call} alt="callimage" />
+              <Image
+                width={30}
+                height={30}
+                src={"/image/phone.png"}
+                alt="callimage"
+              />
               <p>24/7 Support</p>
               <p>
                 We have 24/7 contact support so you can contact us whenever you
@@ -80,7 +74,12 @@ export default function Home() {
               </p>
             </div>
             <div className="col-md-3 bg-white p-3 rounded">
-              <Image src={Lock} alt="callimage" />
+              <Image
+                width={30}
+                height={30}
+                src={"/image/lock.png"}
+                alt="callimage"
+              />
               <p>24/7 Support</p>
               <p>
                 We have 24/7 contact support so you can contact us whenever you
@@ -88,7 +87,12 @@ export default function Home() {
               </p>
             </div>
             <div className="col-md-3  p-3">
-              <Image src={Download} alt="callimage" />
+              <Image
+                width={30}
+                height={30}
+                src={"/image/download.png"}
+                alt="callimage"
+              />
               <p>24/7 Support</p>
               <p>
                 We have 24/7 contact support so you can contact us whenever you
@@ -99,22 +103,42 @@ export default function Home() {
         </div>
         <div className={`${styles.thirdRow}`}>
           <div className="col-md-1">
-            <Image src={Micro} alt="micro" />
+            <Image
+              width={120}
+              height={85}
+              src={"/image/micro.png"}
+              alt="micro"
+            />
           </div>
           <div className="col-md-1">
-            <Image src={Drop} alt="micro" />
+            <Image
+              width={120}
+              height={85}
+              src={"/image/drop.png"}
+              alt="micro"
+            />
           </div>
           <div className="col-md-1">
-            <Image src={Hm} alt="micro" />
+            <Image width={120} height={85} src={"/image/hm.png"} alt="micro" />
           </div>
           <div className="col-md-1">
-            <Image src={Air} alt="micro" />
+            <Image width={120} height={85} src={"/image/air.png"} alt="micro" />
           </div>
           <div className="col-md-1">
-            <Image src={Canon} alt="micro" />
+            <Image
+              width={120}
+              height={85}
+              src={"/image/canon.png"}
+              alt="micro"
+            />
           </div>
           <div className="col-md-1">
-            <Image src={Dell} alt="micro" />
+            <Image
+              width={120}
+              height={85}
+              src={"/image/dell.png"}
+              alt="micro"
+            />
           </div>
         </div>
         <div className={`${styles.fourthRow}`}>
@@ -191,7 +215,12 @@ export default function Home() {
           </p>
           <div className="d-flex justify-content-center align-items-center">
             <div className={styles.arrowLeft}>
-              <Image src={Left} alt="left" />
+              <Image
+                width={40}
+                height={40}
+                src={"/image/left.png"}
+                alt="left"
+              />
             </div>
             <div
               className={`${styles.cardAva} card p-5 border border-0 mx-3 rounded-5`}
@@ -212,7 +241,12 @@ export default function Home() {
               </div>
             </div>
             <div className={styles.arrowRight}>
-              <Image src={Right} alt="right" />
+              <Image
+                width={40}
+                height={40}
+                src={"/image/right.png"}
+                alt="right"
+              />
             </div>
           </div>
         </div>

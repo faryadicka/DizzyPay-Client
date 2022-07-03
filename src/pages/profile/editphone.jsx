@@ -2,11 +2,10 @@ import styles from "../../styles/Profile.module.css";
 import LoggedinLayout from "../../components/LoggedInLayout/index";
 import { useState } from "react";
 import Image from "next/image";
-import Call from "../../assets/img/phone.svg";
 
 const EditPhone = () => {
   const [phone, setPhone] = useState("");
-  console.log(phone);
+
   return (
     <LoggedinLayout title="Change Password">
       <div className={`col-12 col-md-9 ${styles.containerProfile}`}>
@@ -16,13 +15,17 @@ const EditPhone = () => {
           start transfering your money to <br /> another user.
         </p>
         <form
-          // onSubmit={match ? hanldeChangePin : handleMatchPin}
           className={`${styles.contentForm} d-flex flex-column justify-content-center align-items-center `}
         >
           <div className={`col-12 ${styles.contentInputPhone}`}>
-            <Image src={Call} alt="passimg" />
-            <span className={styles.spanInput}>+62</span>
+            <Image
+              width={20}
+              height={20}
+              src={"/image/phone.svg"}
+              alt="passimg"
+            />
             <input
+              className="ms-2"
               type="text"
               name="phone"
               placeholder="Enter your phone number"

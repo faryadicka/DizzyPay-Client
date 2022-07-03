@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Avatar from "../../assets/img/logo.svg";
 import styles from "../../styles/CardHistory.module.css";
 
 const CardHistory = () => {
@@ -9,7 +8,12 @@ const CardHistory = () => {
     >
       <div className="col-8">
         <div className="d-flex align-items-center justify-content-start gap-3">
-          <Image src={Avatar} alt="avatarHistory" />
+          <Image
+            width={60}
+            height={60}
+            src={`/image/avadef.png`}
+            alt="avatarHistory"
+          />
           <div className={`${styles.titleHistory}`}>
             <p>
               Samuel Suhi

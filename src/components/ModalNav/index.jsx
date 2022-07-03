@@ -1,11 +1,11 @@
 import styles from "../../styles/Modal.module.css";
 import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
-import { getProfileAction } from "../../redux/actionCreator/auth";
+// import { getProfileAction } from "../../redux/actionCreator/auth";
+import { getProfileByIdAxios } from "../../modules/auth";
 
 const ModalNav = ({ id, message, button, path }) => {
   const router = useRouter();
-  const dispatch = useDispatch();
   const idUser = useSelector((state) => state.auth.dataLogin.id);
   const token = useSelector((state) => state.auth.dataLogin.token);
   return (
@@ -30,8 +30,16 @@ const ModalNav = ({ id, message, button, path }) => {
                 className="btn btn-primary"
                 data-bs-dismiss="modal"
                 onClick={() => {
-                  router.push(path);
-                  dispatch(getProfileAction(idUser, token));
+                  getProfileByIdAxios(idUser, token)
+                    .then((res) => {
+                      console.log(res);
+                    })
+                    .catch((err) => {
+                      console.log(err);
+                    });
+                  setTimeout(() => {
+                    router.push(path);
+                  }, 1000);
                 }}
               >
                 {button}

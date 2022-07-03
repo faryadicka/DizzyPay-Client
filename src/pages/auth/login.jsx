@@ -16,19 +16,19 @@ import Email from "../../assets/img/mail.png";
 import Hide from "../../assets/img/hide.png";
 import Show from "../../assets/img/show.png";
 import ModalNav from "../../components/ModalNav";
+import ModalNavV2 from "../../components/ModalNavV2";
 
 function Login() {
   const router = useRouter();
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
+  const [modal, setModal] = useState(false);
   const [password, setPassword] = useState("");
   const [errMsg, setErrMessage] = useState("");
   const [successMsg, setSuccessMessage] = useState("");
   const [showPass, setShowPass] = useState(false);
   const [login, setLogin] = useState(false);
-
   const pin = useSelector((state) => state.auth.dataLogin.pin);
-  console.log(pin);
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -40,11 +40,13 @@ function Login() {
       .then((res) => {
         setSuccessMessage(res.value.data.msg);
         setLogin(true);
+        setModal(true);
         console.log(res);
       })
       .catch((err) => {
         console.log(err);
-        setErrMessage(err.response.data.msg);
+        // setErrMessage(err.response.data.msg);
+        setModal(false);
         setLogin(false);
       });
   };
@@ -98,7 +100,7 @@ function Login() {
           </div>
           <p
             onClick={() => {
-              router.push("/forgot");
+              router.push("/auth/forgot");
             }}
             className={`${styles.forgotPass} text-end mt-3`}
           >
@@ -108,8 +110,8 @@ function Login() {
             <p className="text-center text-danger mt-4 fw-bold">{`${errMsg}`}</p>
           )}
           <button
-            data-bs-toggle="modal"
-            data-bs-target="#loginModal"
+            // data-bs-toggle="modal"
+            // data-bs-target="#loginModal"
             type={`${email && password ? "submit" : "button"}`}
             className={`${
               email && password ? styles.activeButton : styles.disableButton
@@ -122,7 +124,7 @@ function Login() {
             <span
               className={styles.registerLink}
               onClick={() => {
-                router.push("/register");
+                router.push("/auth/register");
               }}
             >
               Sign Up
@@ -131,11 +133,14 @@ function Login() {
         </form>
       </div>
       {login ? (
-        <ModalNav
-          id="loginModal"
+        <ModalNavV2
+          show={login}
           message={successMsg}
           button={pin === null ? "Create PIN" : "HOME"}
           path={pin === null ? "/createpin" : "/home"}
+          hide={() => {
+            setLogin(false);
+          }}
         />
       ) : null}
     </AuthSideLayout>

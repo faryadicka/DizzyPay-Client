@@ -31,6 +31,7 @@ const CreatePin = () => {
         setIsSuccess(false);
       });
   };
+  console.log(values);
   return (
     <AuthSideLayout title="Create Pin">
       <div className={`${styles.contentPin} col-md-6 col-12`}>

@@ -125,6 +125,11 @@
   cursor: pointer;
 }
 
+.ImageClick,
+.inputFile {
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 600px) {
   .contentForm {
     padding: 10px;

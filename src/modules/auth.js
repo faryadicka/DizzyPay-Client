@@ -18,5 +18,15 @@ export const createPinAxios = (body, token, id) => {
 
 export const getProfileByIdAxios = (id, token) => {
   const URL = `${HOST}/user/profile/${id}`
-  axios.get(URL, { headers: { 'Authorization': `Bearer ${token}` } })
+  return axios.get(URL, { headers: { 'Authorization': `Bearer ${token}` } })
+}
+
+export const getReceiverAxios = (search = "", sort = "", page = "", token) => {
+  const URL = `${HOST}/user?search=${search}&sort=${sort}&page=${page}`
+  return axios.get(URL, { headers: { 'Authorization': `Bearer ${token}` } })
+}
+
+export const updateProfileAxios = (id, body, token) => {
+  const URL = `${HOST}/user/image/${id}`
+  return axios.patch(URL, body, { headers: { 'Authorization': `Bearer ${token}` } })
 }

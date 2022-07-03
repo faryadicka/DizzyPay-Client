@@ -2,14 +2,8 @@ import Image from "next/image";
 import Head from "next/head";
 import styles from "../../styles/Loggedin.module.css";
 
-import Ava from "../../assets/img/avanav.png";
-import Bell from "../../assets/img/bell.png";
-import Arrow from "../../assets/img/arrow-up.svg";
-import Grid from "../../assets/img/griddisable.svg";
-import Plus from "../../assets/img/plus.svg";
-import Logout from "../../assets/img/log-out.svg";
-import User from "../../assets/img/user.svg";
 import ModalInput from "../ModalInput";
+import ModalInputV2 from "../ModalInputV2";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import CardNotif from "../CardNotif";
@@ -17,16 +11,15 @@ import { useRouter } from "next/router";
 import { topUpAction } from "../../redux/actionCreator/auth";
 
 const LoggedinLayout = ({ children, title }) => {
-  const router = useRouter();
+  const [modal, setModal] = useState(false);
   const [dropdown, showDropdown] = useState(false);
   const [topUp, setTopUp] = useState(0);
   const [isSuccess, setIsSuccess] = useState(false);
   const dispatch = useDispatch();
+  const router = useRouter();
   const token = useSelector((state) => state.auth.dataLogin.token);
-  const redirectUrl = useSelector(
-    (state) => state.auth.dataTopUp.data.redirectUrl
-  );
-  // const status = useSelector((state) => state.auth.dataTopUp.status);
+  const dataInfo = useSelector((state) => state.auth.dataInfo);
+  const redirectUrl = useSelector((state) => state.auth.dataTopUp);
 
   const handleTopUp = (e) => {
     e.preventDefault();
@@ -52,24 +45,41 @@ const LoggedinLayout = ({ children, title }) => {
         <header>
           <nav className={`${styles.navBar}`}>
             <div className="d-flex container justify-content-between py-5">
-              <h3 className={styles.brandName}>DizzyPay</h3>
+              <h3
+                onClick={() => {
+                  router.push("/");
+                }}
+                className={styles.brandName}
+              >
+                DizzyPay
+              </h3>
               <div className="d-flex align-items-center gap-4">
                 <div>
                   <Image
-                    src={Ava}
+                    width={60}
+                    height={60}
+                    src={
+                      dataInfo.data !== undefined
+                        ? `https://fazzpay.herokuapp.com/uploads/${dataInfo.data.image}`
+                        : "/image/avadef.png"
+                    }
                     alt="ava"
-                    width={`50px`}
-                    height={`50px`}
                     className={styles.clickAble}
                   />
                 </div>
                 <div className={`${styles.infoNav}`}>
-                  <p className="fw-bold">Ferry Aryadicka</p>
-                  <p>+62 8988 2320 88</p>
+                  <p className="fw-bold">
+                    {dataInfo
+                      ? dataInfo.data.firstName + " " + dataInfo.data.lastName
+                      : "-"}
+                  </p>
+                  <p>{dataInfo ? dataInfo.data.noTelp : "-"}</p>
                 </div>
                 <div className="position-relative">
                   <Image
-                    src={Bell}
+                    width={20}
+                    height={20}
+                    src={"/image/bell.png"}
                     alt="bell"
                     className={styles.clickAble}
                     onClick={() => {
@@ -97,8 +107,16 @@ const LoggedinLayout = ({ children, title }) => {
                 <div
                   className={`d-flex justify-content-start ${styles.navMenu}`}
                 >
-                  <Image src={Grid} alt="logout" />
+                  <Image
+                    width={20}
+                    height={20}
+                    src={"/image/griddisable.svg"}
+                    alt="logout"
+                  />
                   <button
+                    onClick={() => {
+                      router.push("/home");
+                    }}
                     className={`${
                       false ? styles.activeNav : styles.disableNav
                     }`}
@@ -109,8 +127,16 @@ const LoggedinLayout = ({ children, title }) => {
                 <div
                   className={`d-flex justify-content-start ${styles.navMenu}`}
                 >
-                  <Image src={Arrow} alt="logout" />
+                  <Image
+                    width={20}
+                    height={20}
+                    src={"/image/arrow-up.svg"}
+                    alt="logout"
+                  />
                   <button
+                    onClick={() => {
+                      router.push("/transfer");
+                    }}
                     className={`${
                       false ? styles.activeNav : styles.disableNav
                     }`}
@@ -121,10 +147,16 @@ const LoggedinLayout = ({ children, title }) => {
                 <div
                   className={`d-flex justify-content-start ${styles.navMenu}`}
                 >
-                  <Image src={Plus} alt="logout" />
+                  <Image
+                    width={20}
+                    height={20}
+                    src={"/image/plus.svg"}
+                    alt="logout"
+                  />
                   <button
-                    data-bs-toggle="modal"
-                    data-bs-target="#topUpModal"
+                    onClick={() => {
+                      setModal(true);
+                    }}
                     className={`${
                       false ? styles.activeNav : styles.disableNav
                     }`}
@@ -135,7 +167,12 @@ const LoggedinLayout = ({ children, title }) => {
                 <div
                   className={`d-flex justify-content-start ${styles.navMenu}`}
                 >
-                  <Image src={User} alt="logout" />
+                  <Image
+                    width={20}
+                    height={20}
+                    src={"/image/user.svg"}
+                    alt="logout"
+                  />
                   <button
                     onClick={() => {
                       router.push("/profile");
@@ -150,7 +187,12 @@ const LoggedinLayout = ({ children, title }) => {
                 <div
                   className={`d-flex justify-content-start ${styles.logout}`}
                 >
-                  <Image src={Logout} alt="logout" />
+                  <Image
+                    width={20}
+                    height={20}
+                    src={"/image/log-out.svg"}
+                    alt="logout"
+                  />
                   <button
                     className={`${
                       false ? styles.activeNav : styles.disableNav
@@ -174,25 +216,28 @@ const LoggedinLayout = ({ children, title }) => {
           </div>
         </footer>
       </div>
-      <ModalInput
-        id="topUpModal"
-        title="Topup"
+      <ModalInputV2
+        show={modal}
+        title="Top Up"
         desc="Enter the amount of money, and click submit"
         button="Submit"
         handle={handleTopUp}
         status={isSuccess}
+        hide={() => {
+          setModal(false);
+        }}
       >
         {isSuccess ? (
           <>
             <button
-              // onClick={() => {
-              //   router.push(redirectUrl);
-              // }}
+              onClick={() => {
+                setIsSuccess(false);
+              }}
               className={`${styles.buttonURL} btn btn-primary`}
             >
               <a
                 className="text-white text-decoration-none"
-                href={redirectUrl}
+                href={redirectUrl.data.redirectUrl}
                 target="_blank"
                 rel="noreferrer"
               >
@@ -205,14 +250,13 @@ const LoggedinLayout = ({ children, title }) => {
             type="number"
             name="topup"
             className={styles.inputTopup}
-            placeholder="_______________________________________"
             value={topUp}
             onChange={(e) => {
               setTopUp(e.target.value);
             }}
           />
         )}
-      </ModalInput>
+      </ModalInputV2>
     </>
   );
 };

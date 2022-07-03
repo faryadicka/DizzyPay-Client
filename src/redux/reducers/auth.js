@@ -1,4 +1,4 @@
-import { authRegister, PENDING, FULFILLED, REJECTED, authLogin, topUp, getProfile } from "../actionCreator/actionStrings"
+import { authRegister, PENDING, FULFILLED, REJECTED, authLogin, topUp, getProfile, setNominal, setNotes, getReceiverInfo, getTransferData } from "../actionCreator/actionStrings"
 
 const initialState = {
   dataId: "",
@@ -7,9 +7,14 @@ const initialState = {
   err: null,
   errMsg: "",
   successMsg: "",
-  dataLogin: {},
-  dataTopUp: {},
-  dataInfo: {}
+  dataLogin: "",
+  dataTopUp: "",
+  dataInfo: "",
+  nominal: 0,
+  notes: "",
+  receiverInfo: "",
+  transferData: "",
+  errNetWork: ""
 }
 
 const authReducer = (state = initialState, action) => {
@@ -26,7 +31,7 @@ const authReducer = (state = initialState, action) => {
     case authLogin + FULFILLED:
       return { ...state, successMsg: action.payload.data.msg, errMsg: "", dataLogin: action.payload.data.data, isLoggedin: true, isLoading: false, err: null }
     case authLogin + REJECTED:
-      return { ...state, successMsg: "", errMsg: action.payload.response.data.msg, isLoggedin: false, isLoading: false, err: action.payload }
+      return { ...state, successMsg: "", errNetWork: action.payload.message, errMsg: action.payload.response.data.msg, isLoggedin: false, isLoading: false, err: action.payload }
 
     case topUp + PENDING:
       return { ...state, isLoggedin: false, isLoading: true }
@@ -41,6 +46,25 @@ const authReducer = (state = initialState, action) => {
       return { ...state, successMsg: action.payload.data.msg, errMsg: "", dataInfo: action.payload.data, isLoggedin: true, isLoading: false, err: null }
     case getProfile + REJECTED:
       return { ...state, successMsg: "", errMsg: action.payload.response.data.msg, isLoggedin: false, isLoading: false, err: action.payload }
+
+    case getReceiverInfo + PENDING:
+      return { ...state, isLoggedin: false, isLoading: true }
+    case getReceiverInfo + FULFILLED:
+      return { ...state, successMsg: action.payload.data.msg, errMsg: "", receiverInfo: action.payload.data, isLoggedin: true, isLoading: false, err: null }
+    case getReceiverInfo + REJECTED:
+      return { ...state, successMsg: "", errMsg: action.payload.response.data.msg, isLoggedin: false, isLoading: false, err: action.payload }
+
+    case getTransferData + PENDING:
+      return { ...state, isLoggedin: false, isLoading: true }
+    case getTransferData + FULFILLED:
+      return { ...state, successMsg: action.payload.data.msg, errMsg: "", transferData: action.payload.data, isLoggedin: true, isLoading: false, err: null }
+    case getTransferData + REJECTED:
+      return { ...state, successMsg: "", errMsg: action.payload.response.data.msg, isLoggedin: false, isLoading: false, err: action.payload }
+
+    case setNominal:
+      return { ...state, nominal: action.payload.nominal }
+    case setNotes:
+      return { ...state, notes: action.payload.notes }
 
     default:
       return state

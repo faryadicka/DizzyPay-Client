@@ -1,9 +1,11 @@
 .containerTransfer {
   background-color: white;
   width: 75%;
-  height: 100%;
+  height: 700px;
   border-radius: 20px;
   padding: 20px 40px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .inputRecevier {
@@ -32,6 +34,15 @@
   position: relative;
   left: 680px;
   border-radius: 10px;
+}
+
+.buttonConfirmTransfer {
+  position: relative;
+  left: 600px;
+  top: 120px;
+  border-radius: 15px;
+  padding: 10px 30px;
+  background-color: #6379f4;
 }
 
 .inputSearch:focus {
@@ -102,6 +113,7 @@
   position: relative;
   left: 250px;
   height: 45px;
+  margin-top: 30px;
 }
 
 .notesInput {
@@ -129,5 +141,12 @@
   .buttonConfirm {
     left: 350px;
     border-radius: 10px;
+  }
+  .buttonConfirmTransfer {
+    left: 350px;
+    top: 170px;
+  }
+  .notes {
+    left: 320px;
   }
 }
