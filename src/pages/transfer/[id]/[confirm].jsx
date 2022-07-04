@@ -4,10 +4,8 @@ import { useState, useEffect } from "react";
 import LoggedinLayout from "../../../components/LoggedInLayout/index";
 import styles from "../../../styles/Transfer.module.css";
 import Image from "next/image";
-import Avatar from "../../../assets/img/logo.svg";
-import Success from "../../../assets/img/success.svg";
-import Failed from "../../../assets/img/failed.svg";
-import ModalInput from "../../../components/ModalInput";
+import Success from "../../../../public/image/success.svg";
+import Failed from "../../../../public/image/success.svg";
 import ModalInputV2 from "../../../components/ModalInputV2";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
@@ -78,12 +76,14 @@ const TransferConfirm = () => {
             <h5>Transfer Money</h5>
             <div className={`d-flex mt-2 gap-4 ${styles.cardTransfer}`}>
               <Image
+                width={50}
+                height={50}
                 src={
                   receiverInfo
                     ? receiverInfo.data.image === null
-                      ? (receiverInfo.data.image = Avatar)
-                      : Avatar
-                    : Avatar
+                      ? (receiverInfo.data.image = "/image/avadef.png")
+                      : "/image/avadef.png"
+                    : "/image/avadef.png"
                 }
                 alt="avatarTransfer"
               />
@@ -133,7 +133,18 @@ const TransferConfirm = () => {
           <div className="row px-2">
             <h5>Transfer To</h5>
             <div className={`d-flex mb-3 gap-4 ${styles.cardTransfer}`}>
-              <Image src={Avatar} alt="avatarTransfer" />
+              <Image
+                width={50}
+                height={50}
+                src={
+                  receiverInfo
+                    ? receiverInfo.data.image === null
+                      ? (receiverInfo.data.image = "/image/avadef.png")
+                      : "/image/avadef.png"
+                    : "/image/avadef.png"
+                }
+                alt="avatarTransfer"
+              />
               <div className={`${styles.titleTransfer}`}>
                 <p>
                   Samuel Suhi
