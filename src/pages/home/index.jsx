@@ -1,22 +1,47 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Image from "next/image";
 import styles from "../../styles/Home.module.css";
+
 //Components
 import LoggedinLayout from "../../components/LoggedInLayout/index";
 import CardHistory from "../../components/CardHistory/index";
+import ModalInputV2 from "../../components/ModalInputV2/index";
+
 //ReduxAction
 import { getProfileAction } from "../../redux/actionCreator/auth";
+import { useRouter } from "next/router";
 
 const Home = () => {
+  const router = useRouter();
   const dispatch = useDispatch();
+  const [modal, setModal] = useState(false);
+  const [topUp, setTopUp] = useState(0);
+  const [isSuccess, setIsSuccess] = useState(false);
   const id = useSelector((state) => state.auth.dataLogin.id);
   const token = useSelector((state) => state.auth.dataLogin.token);
   const dataInfo = useSelector((state) => state.auth.dataInfo);
+  const redirectUrl = useSelector((state) => state.auth.dataTopUp);
 
   useEffect(() => {
     dispatch(getProfileAction(id, token));
   }, [dispatch, id, token]);
+
+  const handleTopUp = (e) => {
+    e.preventDefault();
+    const body = {
+      amount: topUp,
+    };
+    dispatch(topUpAction(body, token))
+      .then((res) => {
+        console.log(res);
+        setIsSuccess(true);
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsSuccess(false);
+      });
+  };
   return (
     <LoggedinLayout title="Home">
       <div className="col-12 col-md-9">
@@ -29,8 +54,22 @@ const Home = () => {
             <p className="mt-4">{dataInfo ? dataInfo.data.noTelp : "-"}</p>
           </div>
           <div className="col-3 row gap-3">
-            <button className={`btn ${styles.btnSaldo}`}>Transfer</button>
-            <button className={`btn ${styles.btnSaldo}`}>Top Up</button>
+            <button
+              onClick={() => {
+                router.push("/transfer");
+              }}
+              className={`btn ${styles.btnSaldo}`}
+            >
+              Transfer
+            </button>
+            <button
+              onClick={() => {
+                setModal(true);
+              }}
+              className={`btn ${styles.btnSaldo}`}
+            >
+              Top Up
+            </button>
           </div>
         </div>
         <div
@@ -78,6 +117,47 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <ModalInputV2
+        show={modal}
+        title="Top Up"
+        desc="Enter the amount of money, and click submit"
+        button="Submit"
+        handle={handleTopUp}
+        status={isSuccess}
+        hide={() => {
+          setModal(false);
+        }}
+      >
+        {isSuccess ? (
+          <>
+            <button
+              onClick={() => {
+                setIsSuccess(false);
+              }}
+              className={`${styles.buttonURL} btn btn-primary`}
+            >
+              <a
+                className="text-white text-decoration-none"
+                href={redirectUrl.data.redirectUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Go to Link
+              </a>
+            </button>
+          </>
+        ) : (
+          <input
+            type="number"
+            name="topup"
+            className={styles.inputTopup}
+            value={topUp}
+            onChange={(e) => {
+              setTopUp(e.target.value);
+            }}
+          />
+        )}
+      </ModalInputV2>
     </LoggedinLayout>
   );
 };

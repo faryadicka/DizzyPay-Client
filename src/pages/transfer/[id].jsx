@@ -1,8 +1,6 @@
 import LoggedinLayout from "../../components/LoggedInLayout/index";
 import styles from "../../styles/Transfer.module.css";
 import Image from "next/image";
-import Avatar from "../../assets/img/logo.svg";
-import Pencil from "../../assets/img/Vector.png";
 import { useRouter } from "next/router";
 import { getProfileByIdAxios } from "../../modules/auth";
 import { useEffect, useState } from "react";
@@ -38,7 +36,12 @@ const TransferId = () => {
       <form className={`col-12 col-md-9 ${styles.containerTransfer}`}>
         <h5>Transfer Money</h5>
         <div className={`d-flex mt-4 gap-4 ${styles.cardTransfer}`}>
-          <Image src={Avatar} alt="avatarTransfer" />
+          <Image
+            width={50}
+            height={50}
+            src={"/image/avadef.png"}
+            alt="avatarTransfer"
+          />
           <div className={`${styles.titleTransfer}`}>
             <div className="fw-bold">
               {user.firstName && user.lastName !== undefined
@@ -69,7 +72,12 @@ const TransferId = () => {
         </div>
         <div className="row justifiy-items-center">
           <div className={`col-8 col-md-4 ${styles.notes}`}>
-            <Image src={Pencil} alt="avatarTransfer" />
+            <Image
+              width={25}
+              height={25}
+              src={"/image/Vector.png"}
+              alt="avatarTransfer"
+            />
             <input
               type="text"
               // name="notes"

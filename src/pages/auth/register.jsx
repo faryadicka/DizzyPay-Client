@@ -168,7 +168,7 @@ const Register = () => {
             <span
               className={styles.loginLink}
               onClick={() => {
-                router.push("/login");
+                router.push("/auth/login");
               }}
             >
               Login

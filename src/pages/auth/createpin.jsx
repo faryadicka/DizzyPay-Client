@@ -16,6 +16,7 @@ const CreatePin = () => {
 
   const id = useSelector((state) => state.auth.dataLogin.id);
   const token = useSelector((state) => state.auth.dataLogin.token);
+  const redirectUrl = useSelector((state) => state.auth.dataTopUp);
 
   const handleCreatePin = (e) => {
     e.preventDefault();
@@ -35,7 +36,7 @@ const CreatePin = () => {
   return (
     <AuthSideLayout title="Create Pin">
       <div className={`${styles.contentPin} col-md-6 col-12`}>
-        {isSuccess ? (
+        {!isSuccess ? (
           <>
             <h2>
               Secure Your Account, Your Wallet, and Your Data With 6 Digits PIN
@@ -95,7 +96,7 @@ const CreatePin = () => {
             <button
               onClick={() => {
                 router.push("/home");
-                // setIsSuccess(false);
+                setIsSuccess(false);
               }}
               className={`btn mt-5 ${styles.activeButton}`}
             >
