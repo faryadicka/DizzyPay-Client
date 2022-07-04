@@ -3,6 +3,33 @@ import { useSelector, useDispatch } from "react-redux";
 import Image from "next/image";
 import styles from "../../styles/Home.module.css";
 import { useRouter } from "next/router";
+import { Bar } from "react-chartjs-2";
+import {
+  ArcElement,
+  LineElement,
+  BarElement,
+  PointElement,
+  BarController,
+  BubbleController,
+  DoughnutController,
+  LineController,
+  PieController,
+  PolarAreaController,
+  RadarController,
+  ScatterController,
+  CategoryScale,
+  LinearScale,
+  LogarithmicScale,
+  RadialLinearScale,
+  TimeScale,
+  TimeSeriesScale,
+  Decimation,
+  Filler,
+  Legend,
+  Title,
+  Tooltip,
+  Chart,
+} from "chart.js";
 
 //Components
 import LoggedinLayout from "../../components/LoggedInLayout/index";
@@ -10,13 +37,15 @@ import CardHistory from "../../components/CardHistory/index";
 import ModalInputV2 from "../../components/ModalInputV2/index";
 
 //RequestAxios
-import { getHistoriesLimit } from "../../modules/history";
+import { getDataDashboard, getHistoriesLimit } from "../../modules/history";
 
 //ReduxAction
 import { getProfileAction } from "../../redux/actionCreator/auth";
 
 const Home = () => {
   const [history, setHistory] = useState([]);
+  const [totalExpense, seTotalExpense] = useState(0);
+  const [totalIncome, seTotalIncome] = useState(0);
   const [modal, setModal] = useState(false);
   const [topUp, setTopUp] = useState(0);
   const router = useRouter();
@@ -26,6 +55,58 @@ const Home = () => {
   const token = useSelector((state) => state.auth.dataLogin?.token);
   const dataInfo = useSelector((state) => state.auth.dataInfo);
   const redirectUrl = useSelector((state) => state.auth.dataTopUp);
+  Chart.register(
+    ArcElement,
+    LineElement,
+    BarElement,
+    PointElement,
+    BarController,
+    BubbleController,
+    DoughnutController,
+    LineController,
+    PieController,
+    PolarAreaController,
+    RadarController,
+    ScatterController,
+    CategoryScale,
+    LinearScale,
+    LogarithmicScale,
+    RadialLinearScale,
+    TimeScale,
+    TimeSeriesScale,
+    Decimation,
+    Filler,
+    Legend,
+    Title,
+    Tooltip
+  );
+  const data = {
+    labels: ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"],
+    datasets: [1000000, 1000000],
+  };
+
+  const chartOptions = {
+    responsive: true,
+    scales: {
+      y: {
+        beginAtZero: true,
+        grid: {
+          display: false,
+        },
+      },
+      x: {
+        grid: {
+          display: false,
+        },
+      },
+    },
+    legend: {
+      label: {
+        fontSize: 14,
+        fontFamily: "Nunito Sans",
+      },
+    },
+  };
 
   useEffect(() => {
     getHistoriesLimit(token)
@@ -42,6 +123,18 @@ const Home = () => {
     dispatch(getProfileAction(id, token));
   }, [dispatch, id, token]);
 
+  useEffect(() => {
+    getDataDashboard(token, id)
+      .then((res) => {
+        console.log(res);
+        seTotalExpense(res.data?.data.totalExpense);
+        seTotalIncome(res.data?.data.totalIncome);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [id, token]);
+
   const handleTopUp = (e) => {
     e.preventDefault();
     const body = {
@@ -57,7 +150,6 @@ const Home = () => {
         setIsSuccess(false);
       });
   };
-  console.log(history);
   return (
     <LoggedinLayout title="Home">
       <div className="col-12 col-md-9">
@@ -93,7 +185,9 @@ const Home = () => {
         >
           <div className={`col-5 ${styles.colDashboard}`}>
             <div className="row justify-content-between">
-              <div className={`col-md-4 col-4 ${styles.dashboardCard}`}>
+              <div
+                className={`col-md-6 col-4 text-center ${styles.dashboardCard}`}
+              >
                 <Image
                   src={"/image/arrow-green.svg"}
                   width={30}
@@ -101,9 +195,11 @@ const Home = () => {
                   alt="arrow-gren"
                 />
                 <p>Income</p>
-                <p>Rp2.120.000</p>
+                <p>{`Rp. ${totalIncome}`}</p>
               </div>
-              <div className={`col-md-4 col-4 ps-4 ${styles.dashboardCard}`}>
+              <div
+                className={`col-md-6 col-4 ps-4 text-center ${styles.dashboardCard}`}
+              >
                 <Image
                   src={"/image/arrow-red.svg"}
                   width={30}
@@ -111,8 +207,9 @@ const Home = () => {
                   alt="arrow-gren"
                 />
                 <p>Expense</p>
-                <p>Rp1.560.000</p>
+                <p>{`Rp. ${totalExpense}`}</p>
               </div>
+              <Bar data={data} options={chartOptions} />
             </div>
           </div>
           <div className={`col-4 ${styles.colHistory}`}>

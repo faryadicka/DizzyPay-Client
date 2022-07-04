@@ -15,7 +15,7 @@ const Forgot = () => {
     e.preventDefault();
     const body = {
       email,
-      linkDirect: "http://localhost:4000/auth/forgot",
+      linkDirect: "https://dizzy-pay-client.vercel.app/auth/forgot",
     };
     forgotPassAxios(body)
       .then((res) => {
