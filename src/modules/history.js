@@ -10,3 +10,8 @@ export const getHistoriesLimit = (token) => {
   const URL = `${NEXT_PUBLIC_BASE_URL}/transaction/history?&page=1&limit=4`
   return axios.get(URL, { headers: { 'Authorization': `Bearer ${token}` } })
 }
+
+export const getHistoriesNotif = (token) => {
+  const URL = `${NEXT_PUBLIC_BASE_URL}/transaction/history?&page=1&limit=5`
+  return axios.get(URL, { headers: { 'Authorization': `Bearer ${token}` } })
+}

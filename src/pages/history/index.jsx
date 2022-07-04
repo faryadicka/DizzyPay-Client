@@ -6,8 +6,6 @@ import { useSelector } from "react-redux";
 import { getAllhistories } from "../../modules/history";
 import { useRouter } from "next/router";
 
-const { NEXT_PUBLIC_CLOUDINARY } = process.env;
-
 const Hsitory = () => {
   const [history, setHistory] = useState([]);
   const [pagination, setPagination] = useState({});

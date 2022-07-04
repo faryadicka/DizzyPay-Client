@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Head from "next/head";
 import styles from "../../styles/Loggedin.module.css";
-
+import { getHistoriesNotif } from "../../modules/history";
 import ModalInputV2 from "../ModalInputV2";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import { logoutAction, topUpAction } from "../../redux/actionCreator/auth";
 
 const LoggedinLayout = ({ children, title }) => {
+  const [history, setHistory] = useState([]);
   const [modal, setModal] = useState(false);
   const [dropdown, showDropdown] = useState(false);
   const [topUp, setTopUp] = useState(0);
@@ -19,6 +20,17 @@ const LoggedinLayout = ({ children, title }) => {
   const token = useSelector((state) => state.auth.dataLogin?.token);
   const dataInfo = useSelector((state) => state.auth.dataInfo);
   const redirectUrl = useSelector((state) => state.auth.dataTopUp);
+
+  useEffect(() => {
+    getHistoriesNotif(token)
+      .then((res) => {
+        console.log(res);
+        setHistory(res.data?.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [token]);
 
   const handleTopUp = (e) => {
     e.preventDefault();
@@ -87,11 +99,15 @@ const LoggedinLayout = ({ children, title }) => {
                   />
                   {dropdown ? (
                     <div className={`${styles.dropdown}`}>
-                      <CardNotif />
-                      <CardNotif />
-                      <CardNotif />
-                      <CardNotif />
-                      <CardNotif />
+                      {history.map((data) => (
+                        <CardNotif
+                          firstName={data.firstName}
+                          lastName={data.lastName}
+                          type={data.type}
+                          amount={data.amount}
+                          key={data.id}
+                        />
+                      ))}
                     </div>
                   ) : null}
                 </div>
