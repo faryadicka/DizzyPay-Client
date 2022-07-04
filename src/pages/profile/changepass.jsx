@@ -20,8 +20,8 @@ const ChangePassword = () => {
   const [newPassword, setNewPassword] = useState("");
   const [createPassword, setCreatePassword] = useState("");
   const [changeButton, setChangeButton] = useState(false);
-  const token = useSelector((state) => state.auth.dataLogin.token);
-  const id = useSelector((state) => state.auth.dataLogin.id);
+  const token = useSelector((state) => state.auth.dataLogin?.token);
+  const id = useSelector((state) => state.auth.dataLogin?.id);
   const router = useRouter();
 
   const handleChangePassword = (e) => {

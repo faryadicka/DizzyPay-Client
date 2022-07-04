@@ -15,8 +15,8 @@ const TransferId = () => {
   const [user, setUser] = useState({});
   const router = useRouter();
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.auth.dataLogin.token);
-  const balance = useSelector((state) => state.auth.dataInfo.data.balance);
+  const token = useSelector((state) => state.auth.dataLogin?.token);
+  const balance = useSelector((state) => state.auth.dataInfo?.data.balance);
   const receiverInfo = useSelector((state) => state.auth.receiverInfo);
   const { id } = router.query;
 

@@ -15,8 +15,8 @@ const ChangePin = () => {
   const [changeButton, setChangeButton] = useState(false);
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
-  const token = useSelector((state) => state.auth.dataLogin.token);
-  const id = useSelector((state) => state.auth.dataLogin.id);
+  const token = useSelector((state) => state.auth.dataLogin?.token);
+  const id = useSelector((state) => state.auth.dataLogin?.id);
   const newPin = values.join("");
   const router = useRouter();
 

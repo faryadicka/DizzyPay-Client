@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import CardNotif from "../CardNotif";
 import { useRouter } from "next/router";
 import { logoutAction, topUpAction } from "../../redux/actionCreator/auth";
+import { logoutAxios } from "../../modules/auth";
 
 const LoggedinLayout = ({ children, title }) => {
   const [history, setHistory] = useState([]);
@@ -15,6 +16,7 @@ const LoggedinLayout = ({ children, title }) => {
   const [dropdown, showDropdown] = useState(false);
   const [topUp, setTopUp] = useState(0);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [logoutMsg, setLogoutMsg] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
   const token = useSelector((state) => state.auth.dataLogin?.token);
@@ -65,7 +67,11 @@ const LoggedinLayout = ({ children, title }) => {
                 DizzyPay
               </h3>
               <div className="d-flex align-items-center gap-4">
-                <div>
+                <div
+                  onClick={() => {
+                    router.push("/profile");
+                  }}
+                >
                   <Image
                     width={60}
                     height={60}
@@ -211,6 +217,14 @@ const LoggedinLayout = ({ children, title }) => {
                   <button
                     onClick={() => {
                       dispatch(logoutAction(null));
+                      logoutAxios()
+                        .then((res) => {
+                          console.log(res);
+                          setLogoutMsg(res.data?.msg);
+                        })
+                        .catch((err) => {
+                          console.log(err);
+                        });
                       router.push("/");
                     }}
                     className={`${

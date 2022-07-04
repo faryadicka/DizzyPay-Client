@@ -22,7 +22,7 @@ export const loginAxios = (body) => {
 }
 
 export const logoutAxios = () => {
-  const URL = `${NEXT_PUBLIC_BASE_URL}/auth/login`
+  const URL = `${NEXT_PUBLIC_BASE_URL}/auth/logout`
   return axios.post(URL)
 }
 

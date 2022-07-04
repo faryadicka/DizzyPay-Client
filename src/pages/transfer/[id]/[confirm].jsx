@@ -22,9 +22,9 @@ const TransferConfirm = () => {
   const [successMsg, setSuccessMsg] = useState("");
   const nominal = useSelector((state) => state.auth.nominal);
   const notes = useSelector((state) => state.auth.notes);
-  const balance = useSelector((state) => state.auth.dataInfo.data.balance);
+  const balance = useSelector((state) => state.auth.dataInfo.data?.balance);
   const receiverInfo = useSelector((state) => state.auth.receiverInfo);
-  const token = useSelector((state) => state.auth.dataLogin.token);
+  const token = useSelector((state) => state.auth.dataLogin?.token);
   const router = useRouter();
   const dispatch = useDispatch();
   const { id } = router.query;

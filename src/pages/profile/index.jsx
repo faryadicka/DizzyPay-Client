@@ -19,8 +19,8 @@ const Profile = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const dataInfo = useSelector((state) => state.auth.dataInfo);
-  const id = useSelector((state) => state.auth.dataLogin.id);
-  const token = useSelector((state) => state.auth.dataLogin.token);
+  const id = useSelector((state) => state.auth.dataLogin?.id);
+  const token = useSelector((state) => state.auth.dataLogin?.token);
   const data = [
     { id: 1, title: "Personal Information", path: "personalinfo" },
     { id: 2, title: "Change Password", path: "changepass" },

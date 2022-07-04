@@ -14,7 +14,7 @@ const Transfer = () => {
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const router = useRouter();
-  const token = useSelector((state) => state.auth.dataLogin.token);
+  const token = useSelector((state) => state.auth.dataLogin?.token);
 
   useEffect(() => {
     getReceiverAxios("", "", "", token)

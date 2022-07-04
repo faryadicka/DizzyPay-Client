@@ -7,8 +7,8 @@ import { updatePhoneNumberAxios } from "../../modules/auth";
 
 const EditPhone = () => {
   const [phone, setPhone] = useState("");
-  const id = useSelector((state) => state.auth.dataLogin.id);
-  const token = useSelector((state) => state.auth.dataLogin.token);
+  const id = useSelector((state) => state.auth.dataLogin?.id);
+  const token = useSelector((state) => state.auth.dataLogin?.token);
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const [showMsg, setShowMsg] = useState(false);
