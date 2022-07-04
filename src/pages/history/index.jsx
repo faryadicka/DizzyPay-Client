@@ -10,6 +10,7 @@ const { NEXT_PUBLIC_CLOUDINARY } = process.env;
 
 const Hsitory = () => {
   const [history, setHistory] = useState([]);
+  const [pagination, setPagination] = useState({});
   const [dropdown, showDropdown] = useState(false);
   const token = useSelector((state) => state.auth.dataLogin?.token);
   const router = useRouter();
@@ -21,11 +22,19 @@ const Hsitory = () => {
       .then((res) => {
         console.log(res);
         setHistory(res.data?.data);
+        setPagination(res.data?.pagination);
       })
       .catch((err) => {
         console.log(err);
       });
   }, [token, query]);
+  const { page, totalPage } = pagination;
+  let active = Number(page);
+  let pageItem = [];
+  for (let item = 1; item <= totalPage; item++) {
+    pageItem.push(item);
+  }
+  console.log(router);
   return (
     <LoggedinLayout title="History">
       <div className={`col-12 col-md-9 ${styles.containerHistory}`}>
@@ -79,6 +88,24 @@ const Hsitory = () => {
             key={data.id}
           />
         ))}
+        <div className="text-center">
+          {pageItem.map((item) => (
+            <button
+              onClick={() => {
+                if (router.asPath.includes("filter")) {
+                  return router.push(
+                    `history?filter=${router.query.filter}&page=${item}`
+                  );
+                }
+                return router.push(`history?page=${item}`);
+              }}
+              key={item}
+              className={styles.pagination}
+            >
+              {item}
+            </button>
+          ))}
+        </div>
       </div>
     </LoggedinLayout>
   );
