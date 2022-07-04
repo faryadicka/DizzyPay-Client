@@ -13,7 +13,7 @@ export const forgotPassAxios = (body) => {
 
 export const resetPassAxios = (body) => {
   const URL = `${NEXT_PUBLIC_BASE_URL}/auth/reset-password`
-  return axios.patch(URL, body)
+  return axios.post(URL, body)
 }
 
 export const loginAxios = (body) => {

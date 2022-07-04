@@ -16,7 +16,7 @@ const LoggedinLayout = ({ children, title }) => {
   const [isSuccess, setIsSuccess] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
-  const token = useSelector((state) => state.auth.dataLogin?.token);
+  const token = useSelector((state) => state.auth.dataLogin.token);
   const dataInfo = useSelector((state) => state.auth.dataInfo);
   const redirectUrl = useSelector((state) => state.auth.dataTopUp);
 
