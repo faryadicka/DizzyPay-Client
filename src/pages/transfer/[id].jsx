@@ -17,6 +17,7 @@ const TransferId = () => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.dataLogin.token);
   const balance = useSelector((state) => state.auth.dataInfo.data.balance);
+  const receiverInfo = useSelector((state) => state.auth.receiverInfo);
   const { id } = router.query;
 
   useEffect(() => {
@@ -39,7 +40,11 @@ const TransferId = () => {
           <Image
             width={50}
             height={50}
-            src={"/image/avadef.png"}
+            src={
+              receiverInfo !== null
+                ? `https://res.cloudinary.com/dd1uwz8eu/image/upload/v1653276449/${receiverInfo?.data.image}`
+                : "/image/avadef.png"
+            }
             alt="avatarTransfer"
           />
           <div className={`${styles.titleTransfer}`}>

@@ -1,4 +1,4 @@
-import { authLogin, authRegister, topUp, getProfile, setNominal, setNotes, getReceiverInfo, getTransferData } from "./actionStrings"
+import { authLogin, authRegister, topUp, getProfile, setNominal, setNotes, getReceiverInfo, getTransferData, authLogout } from "./actionStrings"
 
 import { loginAxios, registerAxios, getProfileByIdAxios } from "../../modules/auth"
 import { postTopUpAxios } from "../../modules/topup"
@@ -62,5 +62,14 @@ export const getTransferDataAction = (body, token) => {
   return {
     type: getTransferData,
     payload: getTransferDataAxios(body, token)
+  }
+}
+
+export const logoutAction = (remove) => {
+  return {
+    type: authLogout,
+    payload: {
+      remove
+    }
   }
 }

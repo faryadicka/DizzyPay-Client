@@ -25,7 +25,7 @@ function Login() {
   const [successMsg, setSuccessMessage] = useState("");
   const [showPass, setShowPass] = useState(false);
   const [login, setLogin] = useState(false);
-  const dataLogin = useSelector((state) => state.auth.dataLogin);
+  const pin = useSelector((state) => state.auth.dataLogin?.pin);
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -143,8 +143,8 @@ function Login() {
         <ModalNavV2
           show={login}
           message={successMsg}
-          button={dataLogin.pin === null ? "Create PIN" : "HOME"}
-          path={dataLogin.pin === null ? "/auth/createpin" : "/home"}
+          button={pin === null ? "Create PIN" : "HOME"}
+          path={pin === null ? "/auth/createpin" : "/home"}
           hide={() => {
             setLogin(false);
           }}

@@ -1,47 +1,47 @@
 import axios from "axios";
-const { NEXT_PUBLIC_BASE_URL } = process.env
+const HOST = `https://fazzpay.herokuapp.com`
 
 export const registerAxios = (body) => {
-  const URL = `${NEXT_PUBLIC_BASE_URL}/auth/register`
+  const URL = `${HOST}/auth/register`
   return axios.post(URL, body)
 }
 
 export const loginAxios = (body) => {
-  const URL = `${NEXT_PUBLIC_BASE_URL}/auth/login`
+  const URL = `${HOST}/auth/login`
   return axios.post(URL, body)
 }
 
 export const logoutAxios = () => {
-  const URL = `${NEXT_PUBLIC_BASE_URL}/auth/login`
+  const URL = `${HOST}/auth/login`
   return axios.post(URL)
 }
 
 export const createPinAxios = (body, token, id) => {
-  const URL = `${NEXT_PUBLIC_BASE_URL}/user/pin/${id}`
+  const URL = `${HOST}/user/pin/${id}`
   return axios.patch(URL, body, { headers: { 'Authorization': `Bearer ${token}` } })
 }
 
 export const getProfileByIdAxios = (id, token) => {
-  const URL = `${NEXT_PUBLIC_BASE_URL}/user/profile/${id}`
+  const URL = `${HOST}/user/profile/${id}`
   return axios.get(URL, { headers: { 'Authorization': `Bearer ${token}` } })
 }
 
 export const getReceiverAxios = (search = "", sort = "", page = "", token) => {
-  const URL = `${NEXT_PUBLIC_BASE_URL}/user?search=${search}&sort=${sort}&page=${page}`
+  const URL = `${HOST}/user?search=${search}&sort=${sort}&page=${page}`
   return axios.get(URL, { headers: { 'Authorization': `Bearer ${token}` } })
 }
 
 export const updateProfileAxios = (id, body, token) => {
-  const URL = `${NEXT_PUBLIC_BASE_URL}/user/image/${id}`
+  const URL = `${HOST}/user/image/${id}`
   return axios.patch(URL, body, { headers: { 'Authorization': `Bearer ${token}` } })
 }
 
 export const updatePhoneNumberAxios = (id, body, token) => {
-  const URL = `${NEXT_PUBLIC_BASE_URL}/user/profile/${id}`
+  const URL = `${HOST}/user/profile/${id}`
   return axios.patch(URL, body, { headers: { 'Authorization': `Bearer ${token}` } })
 }
 
 export const updatePasswordAxios = (id, body, token) => {
-  const URL = `${NEXT_PUBLIC_BASE_URL}/user/password/${id}`
+  const URL = `${HOST}/user/password/${id}`
   return axios.patch(URL, body, { headers: { 'Authorization': `Bearer ${token}` } })
 }

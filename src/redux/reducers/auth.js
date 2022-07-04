@@ -1,4 +1,4 @@
-import { authRegister, PENDING, FULFILLED, REJECTED, authLogin, topUp, getProfile, setNominal, setNotes, getReceiverInfo, getTransferData } from "../actionCreator/actionStrings"
+import { authRegister, PENDING, FULFILLED, REJECTED, authLogin, topUp, getProfile, setNominal, setNotes, getReceiverInfo, getTransferData, authLogout } from "../actionCreator/actionStrings"
 
 const initialState = {
   dataId: "",
@@ -7,13 +7,13 @@ const initialState = {
   err: null,
   errMsg: "",
   successMsg: "",
-  dataLogin: "",
-  dataTopUp: "",
-  dataInfo: "",
+  dataLogin: null,
+  dataTopUp: null,
+  dataInfo: null,
   nominal: 0,
   notes: "",
-  receiverInfo: "",
-  transferData: "",
+  receiverInfo: null,
+  transferData: null,
   errNetWork: ""
 }
 
@@ -66,6 +66,10 @@ const authReducer = (state = initialState, action) => {
     case setNotes:
       return { ...state, notes: action.payload.notes }
 
+    case authLogout:
+      const { remove } = action.payload
+      state.dataLogin = remove
+      return { ...state }
     default:
       return state
   }

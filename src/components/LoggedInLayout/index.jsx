@@ -2,13 +2,12 @@ import Image from "next/image";
 import Head from "next/head";
 import styles from "../../styles/Loggedin.module.css";
 
-import ModalInput from "../ModalInput";
 import ModalInputV2 from "../ModalInputV2";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import CardNotif from "../CardNotif";
 import { useRouter } from "next/router";
-import { topUpAction } from "../../redux/actionCreator/auth";
+import { logoutAction, topUpAction } from "../../redux/actionCreator/auth";
 
 const LoggedinLayout = ({ children, title }) => {
   const [modal, setModal] = useState(false);
@@ -59,7 +58,7 @@ const LoggedinLayout = ({ children, title }) => {
                     width={60}
                     height={60}
                     src={
-                      dataInfo
+                      dataInfo?.data.image
                         ? `https://res.cloudinary.com/dd1uwz8eu/image/upload/v1653276449/${dataInfo?.data.image}`
                         : "/image/avadef.png"
                     }
@@ -194,6 +193,10 @@ const LoggedinLayout = ({ children, title }) => {
                     alt="logout"
                   />
                   <button
+                    onClick={() => {
+                      dispatch(logoutAction(null));
+                      router.push("/");
+                    }}
                     className={`${
                       false ? styles.activeNav : styles.disableNav
                     }`}
@@ -229,21 +232,22 @@ const LoggedinLayout = ({ children, title }) => {
       >
         {isSuccess ? (
           <>
-            <button
-              onClick={() => {
-                setIsSuccess(false);
-              }}
-              className={`${styles.buttonURL} btn btn-primary`}
+            <a
+              className="text-white text-decoration-none"
+              href={redirectUrl.data.redirectUrl}
+              target="_blank"
+              rel="noreferrer"
             >
-              <a
-                className="text-white text-decoration-none"
-                href={redirectUrl.data.redirectUrl}
-                target="_blank"
-                rel="noreferrer"
+              <button
+                onClick={() => {
+                  setIsSuccess(false);
+                  setModal(false);
+                }}
+                className={`${styles.buttonURL} btn btn-primary`}
               >
                 Go to Link
-              </a>
-            </button>
+              </button>
+            </a>
           </>
         ) : (
           <input

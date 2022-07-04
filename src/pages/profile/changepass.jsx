@@ -4,14 +4,47 @@ import LoggedinLayout from "../../components/LoggedInLayout/index";
 import Hide from "../../../public/image/hide.png";
 import Show from "../../../public/image/show.png";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { updatePasswordAxios } from "../../modules/auth";
 
 const ChangePassword = () => {
   const [showPass, setShowPass] = useState(false);
   const [showPass1, setShowPass1] = useState(false);
   const [showPass2, setShowPass2] = useState(false);
+  const [showStatus, setShowStatus] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [errMsg, setErrMsg] = useState("");
+  const [successMsg, setSuccessMsg] = useState("");
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [createPassword, setCreatePassword] = useState("");
+  const [changeButton, setChangeButton] = useState(false);
+  const token = useSelector((state) => state.auth.dataLogin.token);
+  const id = useSelector((state) => state.auth.dataLogin.id);
+  const router = useRouter();
+
+  const handleChangePassword = (e) => {
+    e.preventDefault();
+    const body = {
+      oldPassword: password,
+      newPassword,
+      confirmPassword: createPassword,
+    };
+    updatePasswordAxios(id, body, token)
+      .then((res) => {
+        console.log(res);
+        setIsError(false);
+        setChangeButton(true);
+        setShowStatus(true);
+      })
+      .catch((err) => {
+        console.log(err);
+        setErrMsg(err.response?.data.msg);
+        setIsError(true);
+        setShowStatus(true);
+      });
+  };
 
   return (
     <LoggedinLayout title="Change Password">
@@ -22,6 +55,7 @@ const ChangePassword = () => {
           password twice.
         </p>
         <form
+          onSubmit={handleChangePassword}
           className={`${styles.contentForm} d-flex flex-column justify-content-center`}
           // onSubmit={handleLogin}
         >
@@ -103,9 +137,41 @@ const ChangePassword = () => {
               className={styles.eyeCrossed}
             />
           </div>
-          <button type="submit" className={`${styles.contentButton} btn mt-5`}>
-            Change Password
-          </button>
+          {showStatus ? (
+            <>
+              {isError ? (
+                <p className="mt-2 text-center fw-bold text-danger">{`${errMsg} !`}</p>
+              ) : (
+                <p className="mt-2 text-center fw-bold text-success">
+                  Change password is successful!
+                </p>
+              )}
+            </>
+          ) : null}
+          {changeButton ? (
+            <button
+              onClick={() => {
+                router.push("/home");
+                setTimeout(() => {
+                  setChangeButton(false);
+                }, 2000);
+              }}
+              className="btn btn-primary mt-4 rounded-3 px-3"
+            >
+              Back to Home
+            </button>
+          ) : (
+            <button
+              type="submit"
+              className={`${
+                password && newPassword && createPassword
+                  ? styles.activeButton
+                  : styles.disableButton
+              } btn mt-3`}
+            >
+              Change Password
+            </button>
+          )}
         </form>
       </div>
     </LoggedinLayout>

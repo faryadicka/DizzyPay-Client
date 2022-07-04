@@ -1,6 +1,6 @@
 import { PinInput } from "react-input-pin-code";
 import { useState, useEffect } from "react";
-const { NEXT_PUBLIC_CLOUDINARY } = process.env;
+
 import LoggedinLayout from "../../../components/LoggedInLayout/index";
 import styles from "../../../styles/Transfer.module.css";
 import Image from "next/image";
@@ -99,7 +99,7 @@ const TransferConfirm = () => {
                 height={50}
                 src={
                   receiverInfo !== null
-                    ? `${NEXT_PUBLIC_CLOUDINARY}${receiverInfo?.data.image}`
+                    ? `https://res.cloudinary.com/dd1uwz8eu/image/upload/v1653276449/${receiverInfo?.data.image}`
                     : "/image/avadef.png"
                 }
                 alt="avatarTransfer"
@@ -155,7 +155,7 @@ const TransferConfirm = () => {
                 height={50}
                 src={
                   receiverInfo !== null
-                    ? `${NEXT_PUBLIC_CLOUDINARY}${receiverInfo?.data.image}`
+                    ? `https://res.cloudinary.com/dd1uwz8eu/image/upload/v1653276449/${receiverInfo?.data.image}`
                     : "/image/avadef.png"
                 }
                 alt="avatarTransfer"

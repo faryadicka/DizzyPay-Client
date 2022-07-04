@@ -1,7 +1,6 @@
 import Image from "next/image";
 import styles from "../../styles/CardTransfer.module.css";
 import { useRouter } from "next/router";
-const { NEXT_PUBLIC_CLOUDINARY } = process.env;
 
 const CardTransfer = ({ image, firstname, lastname, noTelp, id }) => {
   let name = firstname + " " + lastname;
@@ -17,7 +16,11 @@ const CardTransfer = ({ image, firstname, lastname, noTelp, id }) => {
       <Image
         width={60}
         height={60}
-        src={!image ? "/image/avadef.png" : `${NEXT_PUBLIC_CLOUDINARY}${image}`}
+        src={
+          !image
+            ? "/image/avadef.png"
+            : `https://res.cloudinary.com/dd1uwz8eu/image/upload/v1653276449/${image}`
+        }
         alt="avatarTransfer"
       />
       <div className={`${styles.titleTransfer}`}>

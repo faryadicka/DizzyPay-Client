@@ -18,8 +18,8 @@ const Home = () => {
   const [modal, setModal] = useState(false);
   const [topUp, setTopUp] = useState(0);
   const [isSuccess, setIsSuccess] = useState(false);
-  const id = useSelector((state) => state.auth.dataLogin.id);
-  const token = useSelector((state) => state.auth.dataLogin.token);
+  const id = useSelector((state) => state.auth.dataLogin?.id);
+  const token = useSelector((state) => state.auth.dataLogin?.token);
   const dataInfo = useSelector((state) => state.auth.dataInfo);
   const redirectUrl = useSelector((state) => state.auth.dataTopUp);
 

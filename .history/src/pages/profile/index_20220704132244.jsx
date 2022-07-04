@@ -7,7 +7,6 @@ import CardProfile from "../../components/CardProfile";
 import { updateProfileAxios, getProfileByIdAxios } from "../../modules/auth";
 import { getProfileAction } from "../../redux/actionCreator/auth";
 import { useRouter } from "next/router";
-const { NEXT_PUBLIC_CLOUDINARY } = process.env;
 
 const Profile = () => {
   const [image, setImage] = useState("/image/avadef.png");
@@ -71,7 +70,7 @@ const Profile = () => {
               }}
               src={
                 dataInfo !== null
-                  ? `${NEXT_PUBLIC_CLOUDINARY}${dataInfo?.data.image}`
+                  ? `https://res.cloudinary.com/dd1uwz8eu/image/upload/v1653276449/${dataInfo?.data.image}`
                   : "/image/avadef.png"
               }
               alt="profileimage"

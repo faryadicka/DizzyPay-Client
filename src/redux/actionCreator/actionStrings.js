@@ -1,6 +1,7 @@
 // Request Axios
 export const authRegister = "AUTH_REGISTER"
 export const authLogin = "AUTH_LOGIN"
+export const authLogout = "LOGOUT"
 export const topUp = "TOPUP_USER"
 export const getProfile = "GET_USER"
 export const getReceiverInfo = "GET_RECEIVER"

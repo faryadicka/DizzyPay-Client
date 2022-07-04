@@ -1,4 +1,5 @@
 import axios from "axios";
+const HOST = `https://fazzpay.herokuapp.com`
 const { NEXT_PUBLIC_BASE_URL } = process.env
 
 
