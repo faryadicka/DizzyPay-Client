@@ -9,6 +9,16 @@
   margin-bottom: 20px;
 }
 
+.redColor {
+  font-weight: bold;
+  color: red;
+}
+
+.greenColor {
+  font-weight: bold;
+  color: green;
+}
+
 @media only screen and (max-width: 600px) {
   .titleHistory,
   .clickAble {

@@ -41,7 +41,7 @@ const TransferId = () => {
             width={50}
             height={50}
             src={
-              receiverInfo !== null
+              receiverInfo?.data.image
                 ? `https://res.cloudinary.com/dd1uwz8eu/image/upload/v1653276449/${receiverInfo?.data.image}`
                 : "/image/avadef.png"
             }

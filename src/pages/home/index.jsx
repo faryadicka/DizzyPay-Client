@@ -2,26 +2,41 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Image from "next/image";
 import styles from "../../styles/Home.module.css";
+import { useRouter } from "next/router";
 
 //Components
 import LoggedinLayout from "../../components/LoggedInLayout/index";
 import CardHistory from "../../components/CardHistory/index";
 import ModalInputV2 from "../../components/ModalInputV2/index";
 
+//RequestAxios
+import { getHistoriesLimit } from "../../modules/history";
+
 //ReduxAction
 import { getProfileAction } from "../../redux/actionCreator/auth";
-import { useRouter } from "next/router";
 
 const Home = () => {
-  const router = useRouter();
-  const dispatch = useDispatch();
+  const [history, setHistory] = useState([]);
   const [modal, setModal] = useState(false);
   const [topUp, setTopUp] = useState(0);
+  const router = useRouter();
+  const dispatch = useDispatch();
   const [isSuccess, setIsSuccess] = useState(false);
   const id = useSelector((state) => state.auth.dataLogin?.id);
   const token = useSelector((state) => state.auth.dataLogin?.token);
   const dataInfo = useSelector((state) => state.auth.dataInfo);
   const redirectUrl = useSelector((state) => state.auth.dataTopUp);
+
+  useEffect(() => {
+    getHistoriesLimit(token)
+      .then((res) => {
+        console.log(res);
+        setHistory(res.data?.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [token]);
 
   useEffect(() => {
     dispatch(getProfileAction(id, token));
@@ -42,6 +57,7 @@ const Home = () => {
         setIsSuccess(false);
       });
   };
+  console.log(history);
   return (
     <LoggedinLayout title="Home">
       <div className="col-12 col-md-9">
@@ -107,13 +123,26 @@ const Home = () => {
                 </p>
               </div>
               <div className="col-md-3 col-3">
-                <p className={`${styles.clickAble}`}>See all</p>
+                <p
+                  onClick={() => {
+                    router.push("/history?page=1");
+                  }}
+                  className={`${styles.clickAble}`}
+                >
+                  See all
+                </p>
               </div>
             </div>
-            <CardHistory />
-            <CardHistory />
-            <CardHistory />
-            <CardHistory />
+            {history.map((data) => (
+              <CardHistory
+                image={data.image}
+                firstName={data.firstName}
+                lastName={data.lastName}
+                type={data.type}
+                amount={data.amount}
+                key={data.id}
+              />
+            ))}
           </div>
         </div>
       </div>

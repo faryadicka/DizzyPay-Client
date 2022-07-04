@@ -1,7 +1,16 @@
 import Image from "next/image";
 import styles from "../../styles/CardHistory.module.css";
+const { NEXT_PUBLIC_CLOUDINARY } = process.env;
 
-const CardHistory = () => {
+const CardHistory = ({ image, firstName, lastName, type, amount }) => {
+  const typeName =
+    type === "send"
+      ? "Transfer"
+      : type === "topup"
+      ? "Topup"
+      : type === "accept"
+      ? "Accept"
+      : "";
   return (
     <div
       className={`row justify-content-between align-items-center ${styles.clickAble}`}
@@ -11,19 +20,27 @@ const CardHistory = () => {
           <Image
             width={60}
             height={60}
-            src={`/image/avadef.png`}
+            src={
+              image ? `${NEXT_PUBLIC_CLOUDINARY}${image}` : "/image/avadef.png"
+            }
             alt="avatarHistory"
           />
           <div className={`${styles.titleHistory}`}>
-            <p>
-              Samuel Suhi
-              <section>Accept</section>
-            </p>
+            <div className="fw-bold">
+              {firstName + " " + lastName}
+              <section className="fw-normal">{typeName}</section>
+            </div>
           </div>
         </div>
       </div>
       <div className="col-4 text-end">
-        <p>+Rp50.000</p>
+        <p
+          className={
+            type === "topup" || type === "send"
+              ? styles.redColor
+              : styles.greenColor
+          }
+        >{`${type === "send" ? "-" : "+"}Rp.${amount}`}</p>
       </div>
     </div>
   );
