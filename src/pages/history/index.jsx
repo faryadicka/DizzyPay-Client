@@ -74,6 +74,13 @@ const Hsitory = () => {
                 >
                   YEAR
                 </p>
+                <p
+                  onClick={() => {
+                    router.push("history?page=1");
+                  }}
+                >
+                  ALL
+                </p>
               </div>
             ) : null}
           </div>
