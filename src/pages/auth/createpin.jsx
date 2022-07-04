@@ -16,7 +16,7 @@ const CreatePin = () => {
 
   const id = useSelector((state) => state.auth.dataLogin.id);
   const token = useSelector((state) => state.auth.dataLogin.token);
-  const redirectUrl = useSelector((state) => state.auth.dataTopUp);
+  // const redirectUrl = useSelector((state) => state.auth.dataTopUp);
 
   const handleCreatePin = (e) => {
     e.preventDefault();

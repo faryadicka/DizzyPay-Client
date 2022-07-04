@@ -44,8 +44,7 @@ import { getProfileAction } from "../../redux/actionCreator/auth";
 
 const Home = () => {
   const [history, setHistory] = useState([]);
-  const [totalExpense, seTotalExpense] = useState(0);
-  const [totalIncome, seTotalIncome] = useState(0);
+  const [chartData, setChartData] = useState({});
   const [modal, setModal] = useState(false);
   const [topUp, setTopUp] = useState(0);
   const router = useRouter();
@@ -80,9 +79,42 @@ const Home = () => {
     Title,
     Tooltip
   );
+
+  const incomeData = {
+    label: "Income",
+    data: chartData.listIncome
+      ? [
+          chartData.listIncome[5].total,
+          chartData.listIncome[6].total,
+          chartData.listIncome[0].total,
+          chartData.listIncome[1].total,
+          chartData.listIncome[2].total,
+          chartData.listIncome[3].total,
+          chartData.listIncome[4].total,
+        ]
+      : [],
+    backgroundColor: "#6379F4",
+  };
+
+  const expenseData = {
+    label: "Expense",
+    data: chartData.listIncome
+      ? [
+          chartData.listExpense[5].total,
+          chartData.listExpense[6].total,
+          chartData.listExpense[0].total,
+          chartData.listExpense[1].total,
+          chartData.listExpense[2].total,
+          chartData.listExpense[3].total,
+          chartData.listExpense[4].total,
+        ]
+      : [],
+    backgroundColor: "#9DA6B5",
+  };
+
   const data = {
     labels: ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"],
-    datasets: [1000000, 1000000],
+    datasets: [incomeData, expenseData],
   };
 
   const chartOptions = {
@@ -127,8 +159,7 @@ const Home = () => {
     getDataDashboard(token, id)
       .then((res) => {
         console.log(res);
-        seTotalExpense(res.data?.data.totalExpense);
-        seTotalIncome(res.data?.data.totalIncome);
+        setChartData(res.data?.data);
       })
       .catch((err) => {
         console.log(err);
@@ -150,6 +181,7 @@ const Home = () => {
         setIsSuccess(false);
       });
   };
+  console.log(chartData);
   return (
     <LoggedinLayout title="Home">
       <div className="col-12 col-md-9">
@@ -183,7 +215,7 @@ const Home = () => {
         <div
           className={`d-flex justify-content-between gap-3 mt-4 ${styles.rowInfo}`}
         >
-          <div className={`col-5 ${styles.colDashboard}`}>
+          <div className={`col-5 p-5 ${styles.colDashboard}`}>
             <div className="row justify-content-between">
               <div
                 className={`col-md-6 col-4 text-center ${styles.dashboardCard}`}
@@ -195,7 +227,7 @@ const Home = () => {
                   alt="arrow-gren"
                 />
                 <p>Income</p>
-                <p>{`Rp. ${totalIncome}`}</p>
+                <p>{`Rp. ${chartData.totalIncome}`}</p>
               </div>
               <div
                 className={`col-md-6 col-4 ps-4 text-center ${styles.dashboardCard}`}
@@ -207,7 +239,7 @@ const Home = () => {
                   alt="arrow-gren"
                 />
                 <p>Expense</p>
-                <p>{`Rp. ${totalExpense}`}</p>
+                <p>{`Rp. ${chartData.totalExpense}`}</p>
               </div>
               <Bar data={data} options={chartOptions} />
             </div>

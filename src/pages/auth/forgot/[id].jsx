@@ -27,21 +27,23 @@ const NewPassword = () => {
     };
     resetPassAxios(body)
       .then((res) => {
-        console.log(res);
         setShowMsg(true);
         setIsError(false);
+        setTimeout(() => {
+          setPassword("");
+          setPassword1("");
+          router.push("/auth/login");
+        }, 2000);
       })
       .catch((err) => {
-        console.log(err);
         setErrorMsg(err.response?.data.msg);
         setShowMsg(true);
         setIsError(true);
+        setTimeout(() => {
+          setPassword("");
+          setPassword1("");
+        }, 2000);
       });
-    setTimeout(() => {
-      setPassword("");
-      setPassword1("");
-      router.push("/auth/login");
-    }, 2000);
   };
   console.log(id);
   return (
