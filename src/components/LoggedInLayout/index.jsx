@@ -59,8 +59,8 @@ const LoggedinLayout = ({ children, title }) => {
                     width={60}
                     height={60}
                     src={
-                      dataInfo.data !== undefined
-                        ? `https://fazzpay.herokuapp.com/uploads/${dataInfo.data.image}`
+                      dataInfo
+                        ? `https://res.cloudinary.com/dd1uwz8eu/image/upload/v1653276449/${dataInfo?.data.image}`
                         : "/image/avadef.png"
                     }
                     alt="ava"

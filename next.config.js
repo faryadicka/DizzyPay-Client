@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["fazzpay.herokuapp.com"],
+    domains: ["res.cloudinary.com"],
   }
 }
 

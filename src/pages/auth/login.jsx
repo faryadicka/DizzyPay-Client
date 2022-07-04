@@ -144,7 +144,7 @@ function Login() {
           show={login}
           message={successMsg}
           button={pin === null ? "Create PIN" : "HOME"}
-          path={pin === null ? "/createpin" : "/home"}
+          path={pin === null ? "/auth/createpin" : "/home"}
           hide={() => {
             setLogin(false);
           }}
