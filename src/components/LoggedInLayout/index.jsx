@@ -158,7 +158,7 @@ const LoggedinLayout = ({ children, title }) => {
                   />
                   <button
                     onClick={() => {
-                      router.push("/transfer");
+                      router.push("/transfer?page=1");
                     }}
                     className={`${
                       false ? styles.activeNav : styles.disableNav

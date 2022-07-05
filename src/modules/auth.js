@@ -36,7 +36,7 @@ export const getProfileByIdAxios = (id, token) => {
   return axios.get(URL, { headers: { 'Authorization': `Bearer ${token}` } })
 }
 
-export const getReceiverAxios = (search = "", sort = "", page = "", token) => {
+export const getReceiverAxios = (search = "", sort = "", page = "1", token) => {
   const URL = `${NEXT_PUBLIC_BASE_URL}/user?search=${search}&sort=${sort}&page=${page}`
   return axios.get(URL, { headers: { 'Authorization': `Bearer ${token}` } })
 }
