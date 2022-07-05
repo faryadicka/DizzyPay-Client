@@ -7,6 +7,8 @@ import CardProfile from "../../components/CardProfile";
 import { updateProfileAxios, getProfileByIdAxios } from "../../modules/auth";
 import { getProfileAction } from "../../redux/actionCreator/auth";
 import { useRouter } from "next/router";
+import { logoutAction } from "../../redux/actionCreator/auth";
+import { logoutAxios } from "../../modules/auth";
 const { NEXT_PUBLIC_CLOUDINARY } = process.env;
 
 const Profile = () => {
@@ -113,6 +115,18 @@ const Profile = () => {
               <CardProfile title={item.title} key={item.id} path={item.path} />
             ))}
             <div
+              onClick={() => {
+                dispatch(logoutAction(null));
+                logoutAxios()
+                  .then((res) => {
+                    console.log(res);
+                    setLogoutMsg(res.data?.msg);
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                  });
+                router.push("/");
+              }}
               className={`d-flex justify-content-between align-items-center ${styles.cardProfile}`}
             >
               <div className=" text-start col-5 p-2">Logout</div>
