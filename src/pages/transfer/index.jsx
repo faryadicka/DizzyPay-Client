@@ -20,7 +20,7 @@ const Transfer = () => {
   const token = useSelector((state) => state.auth.dataLogin?.token);
 
   useEffect(() => {
-    const { page = "1", search = "", sort = "" } = query;
+    const { page = "", search = "", sort = "" } = query;
     getReceiverAxios(search, sort, page, token)
       .then((res) => {
         setUser(res.data?.data);
