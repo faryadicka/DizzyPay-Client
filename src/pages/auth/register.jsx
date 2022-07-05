@@ -44,7 +44,8 @@ const Register = () => {
         setRegitered(true);
         setTimeout(() => {
           router.push("/auth/login")
-        }, 1000)
+          setSuccessMessage("")
+        }, 1500)
       })
       .catch((err) => {
         console.log(err.response);
@@ -148,11 +149,11 @@ const Register = () => {
           {login ? (
             <>
               <p className="text-center text-success mt-4 fw-bold">
-                {`${successMsg}`}
+                {`${successMsg}, Please cek your email!`}
               </p>
             </>
           ) : (
-            <p className="text-center text-danger mt-4 fw-bold">{`${errMsg}`}</p>
+            <p className="text-center text-danger mt-4 fw-bold">{`${errMsg}!`}</p>
           )}
           <button
             type={`${

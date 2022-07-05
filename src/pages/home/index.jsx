@@ -40,7 +40,7 @@ import ModalInputV2 from "../../components/ModalInputV2/index";
 import { getDataDashboard, getHistoriesLimit } from "../../modules/history";
 
 //ReduxAction
-import { getProfileAction } from "../../redux/actionCreator/auth";
+import { getProfileAction, topUpAction } from "../../redux/actionCreator/auth";
 
 const Home = () => {
   const [history, setHistory] = useState([]);
@@ -289,21 +289,22 @@ const Home = () => {
       >
         {isSuccess ? (
           <>
-            <button
-              onClick={() => {
-                setIsSuccess(false);
-              }}
-              className={`${styles.buttonURL} btn btn-primary`}
+            <a
+              className="text-white text-decoration-none"
+              href={redirectUrl.data.redirectUrl}
+              target="_blank"
+              rel="noreferrer"
             >
-              <a
-                className="text-white text-decoration-none"
-                href={redirectUrl.data.redirectUrl}
-                target="_blank"
-                rel="noreferrer"
+              <button
+                onClick={() => {
+                  setIsSuccess(false);
+                  setModal(false);
+                }}
+                className={`${styles.buttonURL} btn btn-primary`}
               >
-                Go to Link
-              </a>
-            </button>
+              Pay Topup
+              </button>
+            </a>
           </>
         ) : (
           <input

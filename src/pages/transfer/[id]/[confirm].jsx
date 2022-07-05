@@ -78,6 +78,7 @@ const TransferConfirm = () => {
         });
       setModal(false);
     }
+    return setErrMsg("You don't have enough balance!")
   };
   console.log(link);
 

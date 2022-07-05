@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import CardNotif from "../CardNotif";
 import { useRouter } from "next/router";
-import { logoutAction, topUpAction, getProfileAction } from "../../redux/actionCreator/auth";
+import { logoutAction, getProfileAction, topUpAction } from "../../redux/actionCreator/auth";
 import { logoutAxios } from "../../modules/auth";
 
 const LoggedinLayout = ({ children, title }) => {
@@ -19,6 +19,7 @@ const LoggedinLayout = ({ children, title }) => {
   const [logoutMsg, setLogoutMsg] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
+  const id = useSelector((state) => state.auth.dataLogin?.id);
   const token = useSelector((state) => state.auth.dataLogin?.token);
   const dataInfo = useSelector((state) => state.auth.dataInfo);
   const redirectUrl = useSelector((state) => state.auth.dataTopUp);
@@ -39,7 +40,7 @@ const LoggedinLayout = ({ children, title }) => {
     const body = {
       amount: topUp,
     };
-    dispatch(topUpAction(body, token))
+    dispatch(topUpAction(body,token))
       .then((res) => {
         console.log(res);
         setIsSuccess(true);
@@ -276,7 +277,7 @@ const LoggedinLayout = ({ children, title }) => {
                 }}
                 className={`${styles.buttonURL} btn btn-primary`}
               >
-                Go to Link
+              Pay Topup
               </button>
             </a>
           </>
