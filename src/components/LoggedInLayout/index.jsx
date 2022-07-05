@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import CardNotif from "../CardNotif";
 import { useRouter } from "next/router";
-import { logoutAction, topUpAction } from "../../redux/actionCreator/auth";
+import { logoutAction, topUpAction, getProfileAction } from "../../redux/actionCreator/auth";
 import { logoutAxios } from "../../modules/auth";
 
 const LoggedinLayout = ({ children, title }) => {
@@ -43,6 +43,7 @@ const LoggedinLayout = ({ children, title }) => {
       .then((res) => {
         console.log(res);
         setIsSuccess(true);
+        dispatch(getProfileAction(id, token))
       })
       .catch((err) => {
         console.log(err);

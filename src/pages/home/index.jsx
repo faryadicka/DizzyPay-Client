@@ -175,6 +175,7 @@ const Home = () => {
       .then((res) => {
         console.log(res);
         setIsSuccess(true);
+        dispatch(getProfileAction(id, token))
       })
       .catch((err) => {
         console.log(err);
