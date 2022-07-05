@@ -5,7 +5,6 @@ const { NEXT_PUBLIC_CLOUDINARY } = process.env;
 
 const CardTransfer = ({ image, firstname, lastname, noTelp, id }) => {
   let name = firstname + " " + lastname;
-  console.log(image);
   const router = useRouter();
   return (
     <div

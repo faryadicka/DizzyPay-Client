@@ -197,7 +197,7 @@ const Home = () => {
           <div className="col-3 row gap-3">
             <button
               onClick={() => {
-                router.push("/transfer");
+                router.push("/transfer?page=1");
               }}
               className={`btn ${styles.btnSaldo}`}
             >
