@@ -48,13 +48,13 @@ const TransferConfirm = () => {
           console.log(res);
           dispatch(getTransferDataAction(body, token))
             .then((res) => {
-              console.log(res);
+              // console.log(res);
               setError(false);
               setStatus(true);
               setIsMoved(true);
             })
             .catch((err) => {
-              console.log(err);
+              // console.log(err);
               setStatus(true);
               setErrMsg(err.response?.data.msg);
               setError(true);
@@ -62,7 +62,7 @@ const TransferConfirm = () => {
             });
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
           setErrMsg(err.response?.data.msg);
           setStatus(true);
           setError(true);
@@ -70,17 +70,16 @@ const TransferConfirm = () => {
         });
       exportTransactionAxios(id, token)
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           setLink(res.data?.url);
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err);
         });
       setModal(false);
     }
   };
   console.log(link);
-
   return (
     <LoggedinLayout title="Transfer">
       <div className={`col-12 col-md-9 ${styles.containerTransfer}`}>

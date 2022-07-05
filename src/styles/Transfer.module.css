@@ -155,4 +155,8 @@
     top: 140px;
     left: 320px;
   }
+  .buttonError {
+    position: relative;
+    left: 80px;
+  }
 }
