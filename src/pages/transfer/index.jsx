@@ -34,7 +34,7 @@ const Transfer = () => {
 
   const handleSearchReceiver = (e) => {
     e.preventDefault();
-    router.push(`/transfer?search=${input}&page=${query.page}`);
+    router.push(`/transfer?search=${input}&page=1`);
     getReceiverAxios(input, "", "", token)
       .then((res) => {
         setSearch(res.data?.data);
