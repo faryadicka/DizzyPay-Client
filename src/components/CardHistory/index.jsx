@@ -1,6 +1,8 @@
 import Image from "next/image";
 import styles from "../../styles/CardHistory.module.css";
 const { NEXT_PUBLIC_CLOUDINARY } = process.env;
+import currencyPeriod from "../../modules/helpers/currencyPeriod.js"
+
 
 const CardHistory = ({ image, firstName, lastName, type, amount }) => {
   const typeName =
@@ -40,7 +42,7 @@ const CardHistory = ({ image, firstName, lastName, type, amount }) => {
               ? styles.redColor
               : styles.greenColor
           }
-        >{`${type === "send" ? "-" : "+"}Rp.${amount}`}</p>
+        >{`${type === "send" ? "-" : "+"}Rp.${currencyPeriod(amount)}`}</p>
       </div>
     </div>
   );

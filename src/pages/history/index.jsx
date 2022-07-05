@@ -26,13 +26,13 @@ const Hsitory = () => {
         console.log(err);
       });
   }, [token, query]);
-  const { page, totalPage } = pagination;
+  const { page, totalPage, totalData, limit } = pagination;
   let active = Number(page);
   let pageItem = [];
   for (let item = 1; item <= totalPage; item++) {
     pageItem.push(item);
   }
-  console.log(router);
+  console.log(pagination);
   return (
     <LoggedinLayout title="History">
       <div className={`col-12 col-md-9 ${styles.containerHistory}`}>
@@ -93,7 +93,7 @@ const Hsitory = () => {
             key={data.id}
           />
         ))}
-        <div className="text-center">
+        {/* <div className="text-center">
           {pageItem.map((item) => (
             <button
               onClick={() => {
@@ -110,6 +110,46 @@ const Hsitory = () => {
               {item}
             </button>
           ))}
+        </div> */}
+        <div className="d-flex justify-content-center gap-3">
+          {page <= 1 ? null : (
+            <button
+              onClick={() => {
+                if (router.asPath.includes("filter") && page > 1) {
+                  return router.push(
+                    `history?filter=${router.query.filter}&page=${
+                      Number(query.page) - 1
+                    }`
+                  );
+                }
+                if (page > 1) {
+                  return router.push(`history?page=${Number(query.page) - 1}`);
+                }
+              }}
+              className="btn btn-primary"
+            >
+              PREV
+            </button>
+          )}
+          {page < totalPage ? (
+            <button
+              onClick={() => {
+                if (router.asPath.includes("filter") && page <= 1) {
+                  return router.push(
+                    `history?filter=${router.query.filter}&page=${
+                      Number(query.page) + 1
+                    }`
+                  );
+                }
+                if (page < totalPage) {
+                  return router.push(`history?page=${Number(query.page) + 1}`);
+                }
+              }}
+              className="btn btn-primary"
+            >
+              NEXT
+            </button>
+          ) : null}
         </div>
       </div>
     </LoggedinLayout>

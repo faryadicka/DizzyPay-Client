@@ -38,6 +38,7 @@ import ModalInputV2 from "../../components/ModalInputV2/index";
 
 //RequestAxios
 import { getDataDashboard, getHistoriesLimit } from "../../modules/history";
+import currencyPeriod from "../../modules/helpers/currencyPeriod.js"
 
 //ReduxAction
 import { getProfileAction, topUpAction } from "../../redux/actionCreator/auth";
@@ -182,7 +183,6 @@ const Home = () => {
         setIsSuccess(false);
       });
   };
-  console.log(chartData);
   return (
     <LoggedinLayout title="Home">
       <div className="col-12 col-md-9">
@@ -191,7 +191,7 @@ const Home = () => {
         >
           <div className="col-5">
             <p>Balance</p>
-            <h1>{`Rp.${dataInfo ? dataInfo.data.balance : "0"}`}</h1>
+            <h1>{`Rp.${dataInfo ? currencyPeriod(dataInfo.data.balance) : "0"}`}</h1>
             <p className="mt-4">{dataInfo ? dataInfo.data.noTelp : "-"}</p>
           </div>
           <div className="col-3 row gap-3">
