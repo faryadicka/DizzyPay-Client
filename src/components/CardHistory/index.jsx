@@ -15,7 +15,7 @@ const CardHistory = ({ image, firstName, lastName, type, amount }) => {
     <div
       className={`row justify-content-between align-items-center ${styles.clickAble}`}
     >
-      <div className="col-8">
+      <div className="col-7">
         <div className="d-flex align-items-center justify-content-start gap-3">
           <Image
             width={60}
@@ -33,7 +33,7 @@ const CardHistory = ({ image, firstName, lastName, type, amount }) => {
           </div>
         </div>
       </div>
-      <div className="col-4 text-end">
+      <div className="col-5 text-end">
         <p
           className={
             type === "topup" || type === "send"
