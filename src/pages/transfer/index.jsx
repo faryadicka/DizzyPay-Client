@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getReceiverAxios } from "../../modules/auth";
 import { useRouter } from "next/router";
+import currencyPeriod from "../../modules/helpers/currencyPeriod";
 
 const Transfer = () => {
   const [dropdown, showDropdown] = useState(false);
@@ -43,7 +44,6 @@ const Transfer = () => {
       });
   };
   const { page, totalPage } = pagination;
-  console.log(totalPage)
   return (
     <LoggedinLayout title="Transfer">
       <div className={`col-12 col-md-9 ${styles.containerTransfer}`}>
@@ -134,7 +134,7 @@ const Transfer = () => {
             className={styles.inputSearch}
             placeholder="Search receiver here"
             onChange={(e) => {
-              setInput(e.target.value);
+              setInput(currencyPeriod(e.target.value));
             }}
           />
         </form>

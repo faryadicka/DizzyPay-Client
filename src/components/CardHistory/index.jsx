@@ -38,7 +38,7 @@ const CardHistory = ({ image, firstName, lastName, type, amount }) => {
       <div className="col-5 text-end">
         <p
           className={
-            type === "topup" || type === "send"
+            type === "send"
               ? styles.redColor
               : styles.greenColor
           }

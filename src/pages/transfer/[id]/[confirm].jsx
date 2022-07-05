@@ -14,6 +14,7 @@ import {
   checkPinAxios,
   exportTransactionAxios,
 } from "../../../modules/transfer";
+import currencyPeriod from "../../../modules/helpers/currencyPeriod";
 
 const TransferConfirm = () => {
   const [values, setValues] = useState(["", "", "", "", "", ""]);
@@ -70,16 +71,14 @@ const TransferConfirm = () => {
         });
       exportTransactionAxios(id, token)
         .then((res) => {
-          // console.log(res);
-          setLink(res.data?.url);
+          console.log(res);
         })
         .catch((err) => {
-          // console.log(err);
+          console.log(err);
         });
       setModal(false);
     }
   };
-  console.log(link);
   return (
     <LoggedinLayout title="Transfer">
       <div className={`col-12 col-md-9 ${styles.containerTransfer}`}>
@@ -134,14 +133,14 @@ const TransferConfirm = () => {
         <div className={`mb-3 ${styles.cardDetails}`}>
           <p>
             Amount
-            <section className="fw-bold mt-2">{`Rp.${nominal}`}</section>
+            <section className="fw-bold mt-2">{`Rp.${currencyPeriod(nominal)}`}</section>
           </p>
         </div>
         <div className={`mb-3 ${styles.cardDetails}`}>
           <p>
             Balance Left
             <section className="fw-bold mt-2">{`Rp.${
-              balance - nominal
+              currencyPeriod(balance - nominal)
             }`}</section>
           </p>
         </div>
