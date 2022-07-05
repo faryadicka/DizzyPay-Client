@@ -96,10 +96,6 @@
   margin-top: 10px;
 }
 
-.buttonError {
-  position: relative;
-  left: 480px;
-}
 
 .notes {
   display: flex;
@@ -164,9 +160,5 @@
   }
   .notes {
     left: 65px;
-  }
-  .buttonError {
-    position: relative;
-    left: 80px;
   }
 }
