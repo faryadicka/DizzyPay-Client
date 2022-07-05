@@ -22,8 +22,9 @@
   position: relative;
   bottom: 8px;
   left: 10px;
-  width: 90%;
+  width: 85%;
 }
+
 
 .contentInput > input:focus {
   border: none;

@@ -9,8 +9,6 @@ import AuthSideLayout from "../../components/AuthLayout/Index";
 import Hide from "../../../public/image/hide.png";
 import Show from "../../../public/image/show.png";
 
-//Request Axios
-// import { registerAxios } from "../../modules/auth";
 
 //ReduxAction
 import { registerAction } from "../../redux/actionCreator/auth";
