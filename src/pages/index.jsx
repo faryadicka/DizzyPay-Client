@@ -160,14 +160,14 @@ export default function Home() {
           <div className="col-5">
             <Image src={Smp} alt="imgSMP" />
           </div>
-          <div className="col-7 mt-5">
+          <div className="col-7 mt-md-5">
             <h1 className={`${styles.fourthHeader}`}>
               All The
               <section className={styles.sectionHeader}> Great</section> <br />
               DizzyPay Features.
             </h1>
             <div
-              className={`card border border-0 mt-4 text-start p-3 w-75 rounded-4 ${styles.cardRound}`}
+              className={`card border border-0 mt-4 text-start p-3 rounded-4 ${styles.cardRound}`}
             >
               <div className="title-card">
                 <p className="fw-bold">
@@ -180,7 +180,7 @@ export default function Home() {
               </div>
             </div>
             <div
-              className={`card border border-0 mt-4 text-start p-3 w-75 rounded-4 ${styles.cardRound}`}
+              className={`card border border-0 mt-4 text-start p-3 rounded-4 ${styles.cardRound}`}
             >
               <div className="title-card">
                 <p className="fw-bold">
@@ -193,7 +193,7 @@ export default function Home() {
               </div>
             </div>
             <div
-              className={`card border border-0 mt-4 text-start p-3 w-75 rounded-4 ${styles.cardRound}`}
+              className={`card border border-0 mt-4 text-start p-3 rounded-4 ${styles.cardRound}`}
             >
               <div className="title-card">
                 <p className="fw-bold">

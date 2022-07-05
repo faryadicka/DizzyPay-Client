@@ -118,7 +118,14 @@
   justify-content: space-between;
 }
 
+.cardRound {
+  width: 75%;
+}
+
 @media only screen and (max-width: 600px) {
+  .fourthHeader {
+    font-size: 20px;
+  }
   .seventhRow {
     padding: 80px 50px;
   }
@@ -139,5 +146,9 @@
   .tryBtn {
     width: 150px;
     border-radius: 10px;
+  }
+  .cardRound {
+    width: 85%;
+    font-size: 11px;
   }
 }
