@@ -42,6 +42,9 @@ const Register = () => {
         console.log(res.value);
         setSuccessMessage(res.value.data.msg);
         setRegitered(true);
+        setTimeout(() => {
+          router.push("/auth/login")
+        }, 1000)
       })
       .catch((err) => {
         console.log(err.response);
