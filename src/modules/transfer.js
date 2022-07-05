@@ -16,3 +16,8 @@ export const updatePinAxios = (id, body, token) => {
   const URL = `${NEXT_PUBLIC_BASE_URL}/user/pin/${id}`
   return axios.patch(URL, body, { headers: { 'Authorization': `Bearer ${token}` } })
 }
+
+export const exportTransactionAxios = (id, token) => {
+  const URL = `${NEXT_PUBLIC_BASE_URL}/export/transaction/${id}`
+  return axios.get(URL, { headers: { 'Authorization': `Bearer ${token}` } })
+}

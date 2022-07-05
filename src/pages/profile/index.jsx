@@ -58,7 +58,7 @@ const Profile = () => {
         setErrMsg(err.response?.data.msg);
       });
   };
-  console.log(successMsg);
+  console.log(dataInfo);
   return (
     <LoggedinLayout title="Profile">
       <div className={`col-12 col-md-9 ${styles.containerProfile}`}>
@@ -107,8 +107,8 @@ const Profile = () => {
               hidden
               onChange={handleChangeFile}
             />
-            <h2>Ferry Aryadicka</h2>
-            <p className={styles.contact}>+62 813-9387-7946</p>
+            <h2>{dataInfo.data?.firstName + " " + dataInfo.data?.lastName}</h2>
+            <p className={styles.contact}>{dataInfo.data?.noTelp}</p>
             {data.map((item) => (
               <CardProfile title={item.title} key={item.id} path={item.path} />
             ))}

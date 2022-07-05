@@ -10,7 +10,10 @@ import ModalInputV2 from "../../../components/ModalInputV2";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { getTransferDataAction } from "../../../redux/actionCreator/auth";
-import { checkPinAxios } from "../../../modules/transfer";
+import {
+  checkPinAxios,
+  exportTransactionAxios,
+} from "../../../modules/transfer";
 
 const TransferConfirm = () => {
   const [values, setValues] = useState(["", "", "", "", "", ""]);
@@ -19,7 +22,7 @@ const TransferConfirm = () => {
   const [isError, setError] = useState(false);
   const [modal, setModal] = useState(false);
   const [errMsg, setErrMsg] = useState("");
-  const [successMsg, setSuccessMsg] = useState("");
+  const [link, setLink] = useState("");
   const nominal = useSelector((state) => state.auth.nominal);
   const notes = useSelector((state) => state.auth.notes);
   const balance = useSelector((state) => state.auth.dataInfo.data?.balance);
@@ -65,9 +68,18 @@ const TransferConfirm = () => {
           setError(true);
           setIsMoved(true);
         });
+      exportTransactionAxios(id, token)
+        .then((res) => {
+          console.log(res);
+          setLink(res.data?.url);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       setModal(false);
     }
   };
+  console.log(link);
 
   return (
     <LoggedinLayout title="Transfer">
@@ -197,6 +209,9 @@ const TransferConfirm = () => {
             ) : (
               <div className={`${styles.buttonError}`}>
                 <button
+                  onClick={() => {
+                    router.push(link);
+                  }}
                   className={`btn btn-light me-4 text-primary border border-1`}
                 >
                   Download PDF
