@@ -60,7 +60,6 @@ const Profile = () => {
         setErrMsg(err.response?.data.msg);
       });
   };
-  console.log(dataInfo);
   return (
     <LoggedinLayout title="Profile">
       <div className={`col-12 col-md-9 ${styles.containerProfile}`}>
@@ -72,7 +71,7 @@ const Profile = () => {
                 e.preventDefault();
               }}
               src={
-                dataInfo !== null
+                dataInfo?.data.image
                   ? `${NEXT_PUBLIC_CLOUDINARY}${dataInfo?.data.image}`
                   : "/image/avadef.png"
               }
@@ -110,6 +109,7 @@ const Profile = () => {
               onChange={handleChangeFile}
             />
             <h2>{dataInfo.data?.firstName + " " + dataInfo.data?.lastName}</h2>
+            <span>edit</span>
             <p className={styles.contact}>{dataInfo.data?.noTelp}</p>
             {data.map((item) => (
               <CardProfile title={item.title} key={item.id} path={item.path} />
