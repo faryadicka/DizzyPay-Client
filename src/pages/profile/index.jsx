@@ -90,7 +90,7 @@ const Profile = () => {
                 width="15px"
                 height="15px"
               />
-              <p>Edit</p>
+              <p>EDIT</p>
             </div>
             {showMsg ? (
               <>
@@ -109,7 +109,11 @@ const Profile = () => {
               onChange={handleChangeFile}
             />
             <h2>{dataInfo.data?.firstName + " " + dataInfo.data?.lastName}</h2>
-            <span>edit</span>
+            <button onClick={() => {
+              router.push("/profile/editname")
+            }} className="btn btn-primary my-2">
+              EDIT NAME
+            </button>
             <p className={styles.contact}>{dataInfo.data?.noTelp}</p>
             {data.map((item) => (
               <CardProfile title={item.title} key={item.id} path={item.path} />

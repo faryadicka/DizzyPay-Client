@@ -55,3 +55,8 @@ export const updatePasswordAxios = (id, body, token) => {
   const URL = `${NEXT_PUBLIC_BASE_URL}/user/password/${id}`
   return axios.patch(URL, body, { headers: { 'Authorization': `Bearer ${token}` } })
 }
+
+export const updateFullNameAxios = (id, body, token) => {
+  const URL = `${NEXT_PUBLIC_BASE_URL}/user/profile/${id}`
+  return axios.patch(URL, body, { headers: { 'Authorization': `Bearer ${token}` } })
+}
