@@ -9,7 +9,6 @@ import AuthSideLayout from "../../components/AuthLayout/Index";
 import Hide from "../../../public/image/hide.png";
 import Show from "../../../public/image/show.png";
 
-
 //ReduxAction
 import { registerAction } from "../../redux/actionCreator/auth";
 
@@ -23,7 +22,8 @@ const Register = () => {
   const [errMsg, setErrMessage] = useState("");
   const [successMsg, setSuccessMessage] = useState("");
   const [showPass, setShowPass] = useState(false);
-  const [registered, setRegitered] = useState(false);
+  const [registered, setRegistered] = useState(false);
+  const [showMsg, setShowMsg] = useState(false);
   const id = useSelector((state) => state.auth.dataId);
   const login = useSelector((state) => state.auth.isLoggedin);
 
@@ -39,16 +39,18 @@ const Register = () => {
       .then((res) => {
         console.log(res.value);
         setSuccessMessage(res.value.data.msg);
-        setRegitered(true);
         setTimeout(() => {
-          router.push("/auth/login")
-          setSuccessMessage("")
-        }, 1500)
+          router.push("/auth/login");
+          setSuccessMessage("");
+        }, 1500);
+        setRegistered(true);
+        setShowMsg(true);
       })
       .catch((err) => {
         console.log(err.response);
         setErrMessage(err.response.data.msg);
-        setRegitered(false);
+        setRegistered(false);
+        setShowMsg(true);
       });
   };
 
@@ -144,15 +146,19 @@ const Register = () => {
               }}
             />
           </div>
-          {login ? (
+          {showMsg ? (
             <>
-              <p className="text-center text-success mt-4 fw-bold">
-                {`${successMsg}, Please cek your email!`}
-              </p>
+              {registered ? (
+                <>
+                  <p className="text-center text-success mt-4 fw-bold">
+                    {`${successMsg}, Please cek your email!`}
+                  </p>
+                </>
+              ) : (
+                <p className="text-center text-danger mt-4 fw-bold">{`${errMsg}!`}</p>
+              )}
             </>
-          ) : (
-            <p className="text-center text-danger mt-4 fw-bold">{`${errMsg}!`}</p>
-          )}
+          ) : null}
           <button
             type={`${
               email && password && firstName && lastName ? "submit" : "button"
