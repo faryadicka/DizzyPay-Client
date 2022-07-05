@@ -43,7 +43,6 @@ const Transfer = () => {
         console.log(err);
       });
   };
-  console.log(input);
   return (
     <LoggedinLayout title="Transfer">
       <div className={`col-12 col-md-9 ${styles.containerTransfer}`}>
@@ -62,28 +61,47 @@ const Transfer = () => {
             <div className={styles.dropDownV2}>
               <p
                 onClick={() => {
-                  router.push("history?filter=WEEK&page=1");
+                  if(router.asPath.includes("search")){
+                    return router.push(`transfer?search=${query.search}&sort=firstName+ASC&page=1`);
+                  }
+                  return router.push(`transfer?sort=firstName+ASC&page=1`)
                 }}
               >
-                WEEK
+                FIRST NAME A to Z
               </p>
               <p
                 onClick={() => {
-                  router.push("history?filter=MONTH&page=1");
+                  if(router.asPath.includes("search")){
+                    return router.push(`transfer?search=${query.search}&sort=firstName+DESC&page=1`);
+                  }
+                  return router.push(`transfer?sort=firstName+DESC&page=1`)
                 }}
               >
-                MONTH
+                FIRST NAME Z to A
               </p>
               <p
                 onClick={() => {
-                  router.push("history?filter=YEAR&page=1");
+                  if(router.asPath.includes("search")){
+                    return router.push(`transfer?search=${query.search}&sort=noTelp+ASC&page=1`);
+                  }
+                  return router.push(`transfer?sort=noTelp+ASC&page=1`)
                 }}
               >
-                YEAR
+                NO TELP ASC
               </p>
               <p
                 onClick={() => {
-                  router.push("history?page=1");
+                  if(router.asPath.includes("search")){
+                    return router.push(`transfer?search=${query.search}&sort=noTelp+DESC&page=1`);
+                  }
+                  return router.push(`transfer?sort=noTelp+DESC&page=1`)
+                }}
+              >
+                NO TELP DESC
+              </p>
+              <p
+                onClick={() => {
+                  return router.push(`transfer?page=1`)
                 }}
               >
                 ALL
