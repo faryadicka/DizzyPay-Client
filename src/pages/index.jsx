@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useRouter } from "next/router";
 import styles from "../styles/Landing.module.css";
 import Image from "next/image";
@@ -10,6 +11,9 @@ export default function Home() {
   const router = useRouter();
   return (
     <>
+    <Head>
+      <title>Landing page</title>
+    </Head>
       <div className={`${styles.containerHome} text-center`}>
         <div className={`${styles.banner}`}>
           <div className="p-5 row justify-content-between">
