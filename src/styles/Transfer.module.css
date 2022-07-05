@@ -1,7 +1,7 @@
 .containerTransfer {
   background-color: white;
   width: 75%;
-  height: 100%;
+  height: 640px;
   border-radius: 20px;
   padding: 20px 40px;
 }
@@ -37,7 +37,7 @@
 .buttonConfirmTransfer {
   position: relative;
   left: 600px;
-  top: 120px;
+  top: 70px;
   border-radius: 15px;
   padding: 10px 30px;
   background-color: #6379f4;
@@ -171,7 +171,7 @@
     left: 65px;
   }
   .buttonConfirmTransfer {
-    top: 140px;
+    top: 60px;
     left: 320px;
   }
   .buttonError {
