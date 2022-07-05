@@ -94,6 +94,7 @@ const TransferId = () => {
             />
           </div>
         </div>
+        <div className="d-flex justify-content-end">
         <button
           onClick={(e) => {
             e.preventDefault();
@@ -103,6 +104,7 @@ const TransferId = () => {
         >
           Continue
         </button>
+        </div>
       </form>
     </LoggedinLayout>
   );

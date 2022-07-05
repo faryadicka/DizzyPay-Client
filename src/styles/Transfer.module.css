@@ -1,7 +1,7 @@
 .containerTransfer {
   background-color: white;
   width: 75%;
-  height: 640px;
+  height: 100%;
   border-radius: 20px;
   padding: 20px 40px;
 }
@@ -29,15 +29,14 @@
 }
 
 .buttonConfirm {
-  position: relative;
-  left: 680px;
   border-radius: 10px;
 }
 
 .buttonConfirmTransfer {
-  position: relative;
+  /* position: relative;
   left: 600px;
-  top: 70px;
+  top: 70px; */
+  margin-top: 50px;
   border-radius: 15px;
   padding: 10px 30px;
   background-color: #6379f4;
@@ -156,10 +155,6 @@
     left: 60px;
     height: 40px;
   }
-  .buttonConfirm {
-    left: 350px;
-    border-radius: 10px;
-  }
   .buttonConfirmTransfer {
     left: 350px;
     top: 170px;
@@ -169,10 +164,6 @@
   }
   .notes {
     left: 65px;
-  }
-  .buttonConfirmTransfer {
-    top: 60px;
-    left: 320px;
   }
   .buttonError {
     position: relative;

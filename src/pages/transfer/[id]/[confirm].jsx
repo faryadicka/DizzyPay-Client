@@ -184,6 +184,7 @@ const TransferConfirm = () => {
             </div>
           </div>
         ) : null}
+        <div className="d-flex justify-content-end">
         {!status ? (
           <button
             onClick={() => {
@@ -227,6 +228,7 @@ const TransferConfirm = () => {
             )}
           </>
         )}
+        </div>
       </div>
       <ModalInputV2
         show={modal}
