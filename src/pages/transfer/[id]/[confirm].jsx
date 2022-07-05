@@ -78,7 +78,6 @@ const TransferConfirm = () => {
         });
       setModal(false);
     }
-    return setErrMsg("You don't have enough balance!")
   };
   console.log(link);
 
@@ -111,7 +110,7 @@ const TransferConfirm = () => {
                 width={50}
                 height={50}
                 src={
-                  receiverInfo !== null
+                  receiverInfo?.data.image
                     ? `${NEXT_PUBLIC_CLOUDINARY}${receiverInfo?.data.image}`
                     : "/image/avadef.png"
                 }
@@ -167,7 +166,7 @@ const TransferConfirm = () => {
                 width={50}
                 height={50}
                 src={
-                  receiverInfo !== null
+                  receiverInfo?.data.image
                     ? `${NEXT_PUBLIC_CLOUDINARY}${receiverInfo?.data.image}`
                     : "/image/avadef.png"
                 }

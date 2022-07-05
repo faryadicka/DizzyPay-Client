@@ -148,4 +148,11 @@
   .notes {
     left: 320px;
   }
+  .notes {
+    left: 65px;
+  }
+  .buttonConfirmTransfer {
+    top: 140px;
+    left: 320px;
+  }
 }
