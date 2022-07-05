@@ -9,7 +9,6 @@ import { useRouter } from "next/router";
 
 const Transfer = () => {
   const [dropdown, showDropdown] = useState(false);
-  const [search, setSearch] = useState([]);
   const [pagination, setPagination] = useState({});
   const [input, setInput] = useState("");
   const [user, setUser] = useState([]);
@@ -37,13 +36,13 @@ const Transfer = () => {
     router.push(`/transfer?search=${input}&page=1`);
     getReceiverAxios(input, "", "", token)
       .then((res) => {
-        setSearch(res.data?.data);
+        setUser(res.data?.data);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  const { page, totalPage, totalData, limit } = pagination;
+  const { page, totalPage } = pagination;
   console.log(totalPage)
   return (
     <LoggedinLayout title="Transfer">
@@ -139,18 +138,7 @@ const Transfer = () => {
             }}
           />
         </form>
-        {router.query.search
-          ? search.map((data) => (
-              <CardTransfer
-                lastname={data.lastName}
-                firstname={data.firstName}
-                key={data.id}
-                noTelp={data.noTelp}
-                image={data.image}
-                id={data.id}
-              />
-            ))
-          : user.map((data) => (
+        {user.map((data) => (
               <CardTransfer
                 lastname={data.lastName}
                 firstname={data.firstName}
