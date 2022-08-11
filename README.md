@@ -48,7 +48,7 @@ $ npm i
 
 ### 3. Set up Project
 
-- Configure .env file
+- Configure .env.local file
 
 Configure .env file by create file named .env inside project folder and add this line to the file:
 
