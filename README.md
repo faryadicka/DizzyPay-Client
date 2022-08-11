@@ -50,7 +50,7 @@ $ npm i
 
 - Configure .env.local file
 
-Configure .env file by create file named .env inside project folder and add this line to the file:
+Configure .env file by create file named .env.local inside project folder and add this line to the file:
 
 <br/>
 
